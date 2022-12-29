@@ -16,6 +16,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+  bool pressedIcon = true;
   @override
   Widget build(BuildContext context) {
     final size = AppLayout.getSize(context);
@@ -38,12 +40,24 @@ class _LoginScreenState extends State<LoginScreen> {
               textAlign: TextAlign.center,
             ),
             const Gap(20),
+
+            //TODO: TEXT ON LOGIN
             CustomWidgets.textField("Email",
-                suffixIcon: Ionicons.mail, hint: "Email"),
+                suffixIcon: Ionicons.mail,
+                hint: "Email"
+            ),
             CustomWidgets.textField("Password",
-                suffixIcon: Ionicons.eye_off,
+                suffixIcon: pressedIcon==true?Ionicons.eye_off:Icons.visibility,
+                IconOnPressed: () {
+              setState(() {
+                pressedIcon==true?pressedIcon=false:pressedIcon=true;
+
+              }
+              );
+                  print("pressed");
+                },
                 hint: "Password",
-                isPassword: true),
+                isPassword: pressedIcon),
             const Gap(40),
             PrimaryButtonWidget(
                 isBorder: true,
@@ -63,10 +77,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 "Don't have an Account? ",
                 style: Styles.textStyle.copyWith(color: Colors.black),
               ),
-              Text(
-                "Create Account",
-                style: Styles.textStyle.copyWith(
-                    color: kPrimaryColor, fontWeight: FontWeight.bold),
+              InkWell(
+                onTap: () => Get.toNamed(RouteHelpers.getOnboardingRoute()),
+                child: Text(
+                  "Create Account",
+                  style: Styles.textStyle.copyWith(
+                      color: kPrimaryColor, fontWeight: FontWeight.bold),
+                ),
               ),
             ]),
             const Gap(10),

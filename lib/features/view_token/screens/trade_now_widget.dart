@@ -22,7 +22,7 @@ class TradeNowButton extends StatelessWidget {
         width: AppLayout.getScreenWidth() * 0.35,
         decoration: BoxDecoration(
             color: kSecondaryColor,
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 offset: Offset(3, 10),
                 spreadRadius: -8,

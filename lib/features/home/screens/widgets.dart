@@ -11,10 +11,16 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
+import '../../../common_widgets/bellNotificationBottonSheet/bottonSheetNofity.dart';
+import '../../view_token/screens/view_coin.dart';
+
 class WelcomeHeader extends StatelessWidget {
-  const WelcomeHeader({
-    Key? key,
+   WelcomeHeader({
+    Key? key, this.welcome="Welcome", this.name="Oluwaseun",
   }) : super(key: key);
+
+  String? welcome;
+  String name;
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +32,14 @@ class WelcomeHeader extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Welcome",
+              welcome!,
               style: Styles.textStyle.copyWith(
                   color: Colors.black,
                   fontSize: 18,
                   fontWeight: FontWeight.normal),
             ),
             Text(
-              "Oluwaseun",
+              name,
               style: Styles.textStyle.copyWith(
                   color: Colors.black,
                   fontSize: 26,
@@ -41,12 +47,28 @@ class WelcomeHeader extends StatelessWidget {
             ),
           ],
         ),
-        Container(
-          height: 50,
-          width: 50,
-          decoration: BoxDecoration(
-              color: kPrimaryColor, borderRadius: BorderRadius.circular(14)),
-          child: Icon(Icons.notifications, color: Colors.white),
+        InkWell(
+          onTap: () {
+            Get.bottomSheet(Column(
+              children: [
+                Container(
+                  height: 490,
+                  decoration: BoxDecoration(color: Color(0xFF7F23A8), borderRadius: BorderRadius.circular(30)),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 50.0, right: 23, top: 32),
+                    child: BottonSheetNotify(),
+                  ),
+                ),
+              ],
+            ));
+          },
+          child: Container(
+            height: 50,
+            width: 50,
+            decoration: BoxDecoration(
+                color: kPrimaryColor, borderRadius: BorderRadius.circular(14)),
+            child: Icon(Icons.notifications, color: Colors.white),
+          ),
         )
       ],
     );
@@ -86,8 +108,8 @@ class CoinCard extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 10),
       child: InkWell(
         onTap: () {
-          Get.toNamed(
-            RouteHelpers.getViewCoinDetails(),
+          Get.to(
+            ViewCoin(),
             arguments: [coin],
           );
         },
@@ -231,7 +253,7 @@ class CoinCard3 extends StatelessWidget {
                   onTap: () {
                     favCounterController.removeFavCoinFromList(coin.symbol);
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.cancel_rounded,
                     size: 30,
                     color: kPrimaryColor,
@@ -315,7 +337,7 @@ class AddTokenBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 500,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(40), topLeft: Radius.circular(40)),
           color: kPrimaryColor),
@@ -342,7 +364,7 @@ class AddTokenBottomSheet extends StatelessWidget {
                       border: InputBorder.none,
                       hintText: 'Enter a Token name...',
                       hintStyle: TextStyle(color: Colors.grey[700]),
-                      prefixIcon: Icon(
+                      prefixIcon: const Icon(
                         Icons.search_rounded,
                         color: Colors.black,
                       ),

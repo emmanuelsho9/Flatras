@@ -26,6 +26,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   late PageController _pageController;
   int _initPageIndex = 0;
   int currentIndex = 0;
+  bool pressedIcon = true;
+
 
   // SeedPhrase? parse;
   // bool isLoaded = false;
@@ -101,16 +103,24 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         textAlign: TextAlign.center,
                       ),
                       const Gap(25),
+                      //TODO: TEXT ON Onboard
                       CustomWidgets.textField("Fullname",
                           suffixIcon: Ionicons.person_circle_outline,
                           hint: "Fullname"),
                       const Gap(5),
                       CustomWidgets.textField("Email",
-                          suffixIcon: Ionicons.mail, hint: "Email"),
+                          suffixIcon: Ionicons.mail,
+                          hint: "Email"),
                       CustomWidgets.textField("Password",
-                          suffixIcon: Ionicons.eye_off,
+                          suffixIcon: pressedIcon==true?Ionicons.eye_off:Icons.visibility,
                           hint: "Password",
-                          isPassword: true),
+                          IconOnPressed: () {
+                            setState(() {
+                              pressedIcon==true?pressedIcon=false:pressedIcon=true;
+
+                            });
+                          },
+                          isPassword: pressedIcon),
                       const Gap(10),
                       PasswordAttributesWidget(
                           text: "Contains at least 8 Characters"),
@@ -128,19 +138,22 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                 curve: Curves.easeIn);
                           }),
                       const Gap(30),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("Already have an Account? ",
-                              style: Styles.textStyle
-                                  .copyWith(fontWeight: FontWeight.normal)),
-                          Text(
-                            "Login",
-                            style: Styles.textStyle.copyWith(
-                                color: kPrimaryColor,
-                                fontWeight: FontWeight.bold),
-                          )
-                        ],
+                      InkWell(
+                        onTap: () => Get.toNamed(RouteHelpers.getLoginRoute()),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("Already have an Account? ",
+                                style: Styles.textStyle
+                                    .copyWith(fontWeight: FontWeight.normal)),
+                            Text(
+                              "Login",
+                              style: Styles.textStyle.copyWith(
+                                  color: kPrimaryColor,
+                                  fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        ),
                       ),
                       const Gap(30),
                       RichText(

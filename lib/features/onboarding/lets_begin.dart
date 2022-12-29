@@ -14,7 +14,7 @@ class LetBeginScreen extends StatelessWidget {
     final size = AppLayout.getSize(context);
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 fit: BoxFit.cover,
                 image: AssetImage("assets/images/background.png"))),
@@ -40,22 +40,22 @@ class LetBeginScreen extends StatelessWidget {
                       press: () =>
                           Get.toNamed(RouteHelpers.getOnboardingRoute())),
                   const Gap(30),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Already have an Account? ",
-                        style: Styles.textStyle.copyWith(color: Colors.white),
-                      ),
-                      InkWell(
-                        onTap: () => Get.toNamed(RouteHelpers.getLoginRoute()),
-                        child: Text(
+                  InkWell(
+                      onTap: () => Get.toNamed(RouteHelpers.getLoginRoute()),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Already have an Account? ",
+                          style: Styles.textStyle.copyWith(color: Colors.white),
+                        ),
+                        Text(
                           "Login",
                           style: Styles.textStyle.copyWith(
                               color: Colors.white, fontWeight: FontWeight.bold),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),

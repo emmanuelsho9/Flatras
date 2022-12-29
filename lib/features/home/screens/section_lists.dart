@@ -59,7 +59,8 @@ class SectionList extends StatelessWidget {
                   PrimaryButtonWidget(
                       size: size * 0.5,
                       text: "Add Watchlist",
-                      press: () => showModalBottomSheet(
+                      press: () =>
+                          showModalBottomSheet(
                           backgroundColor: Colors.transparent,
                           context: context,
                           builder: (context) => AddTokenBottomSheet()),

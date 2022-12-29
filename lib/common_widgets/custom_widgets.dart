@@ -11,12 +11,13 @@ import 'package:get/get.dart';
 class CustomWidgets {
   static Widget textField(String title,
       {bool isPassword = false,
-      bool isNumber = false,
+        TextInputType? keyboardType,
       bool obscureText = true,
+         Function()? IconOnPressed,
       int? length,
+        required IconData suffixIcon,
       String? hint,
       Function()? passwordVisibilityPress,
-      IconData? suffixIcon,
       TextEditingController? textController,
       int lines = 1}) {
     return Container(
@@ -24,7 +25,7 @@ class CustomWidgets {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
@@ -45,21 +46,13 @@ class CustomWidgets {
                 LengthLimitingTextInputFormatter(length),
               ],
               obscureText: isPassword,
-              keyboardType:
-                  isNumber ? TextInputType.number : TextInputType.text,
+              keyboardType:keyboardType,
               decoration: InputDecoration(
                 hintText: hint,
                 border: InputBorder.none,
-                suffixIcon: isPassword
-                    ? IconButton(
-                        icon: Icon(suffixIcon),
-                        onPressed: passwordVisibilityPress,
-                      )
-                    : Icon(
-                        suffixIcon,
-                        color: Colors.black,
-                        size: 24,
-                      ),
+                suffixIcon: IconButton(onPressed: IconOnPressed,
+                    icon: Icon(suffixIcon)
+                ),
                 contentPadding:
                     EdgeInsets.symmetric(vertical: 14, horizontal: 10),
                 isDense: true,

@@ -15,15 +15,20 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-class ViewCoin extends StatefulWidget {
-  const ViewCoin({super.key});
+import '../../../common_widgets/testing/Trade.dart';
+import '../../buy_crypto/screens/buy_screen.dart';
 
-  @override
+class ViewCoin extends StatefulWidget {
+   ViewCoin({Key? key, }) : super(key: key);
+
+
+   @override
   State<ViewCoin> createState() => _ViewCoinState();
 }
 
 class _ViewCoinState extends State<ViewCoin> {
   var data = Get.arguments;
+
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +40,7 @@ class _ViewCoinState extends State<ViewCoin> {
           leading: Padding(
             padding: const EdgeInsets.only(left: 16),
             child: IconButton(
-              icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+              icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
               onPressed: () => Get.back(),
             ),
           )),
@@ -171,7 +176,7 @@ class _ViewCoinState extends State<ViewCoin> {
 
   Widget tradeBottomSheet() => Container(
         height: 300,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
                 topRight: Radius.circular(40), topLeft: Radius.circular(40)),
             color: kPrimaryColor),
@@ -190,7 +195,7 @@ class _ViewCoinState extends State<ViewCoin> {
                 },
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.sell,
                       size: 25,
                       color: kSecondaryColor,
@@ -208,7 +213,7 @@ class _ViewCoinState extends State<ViewCoin> {
                 children: [
                   Transform.rotate(
                     angle: 90 * pi / 180,
-                    child: Icon(
+                    child: const Icon(
                       Icons.sell,
                       size: 25,
                       color: kSecondaryColor,
@@ -224,7 +229,7 @@ class _ViewCoinState extends State<ViewCoin> {
               ),
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.arrow_upward,
                     size: 25,
                     color: kSecondaryColor,
@@ -239,7 +244,7 @@ class _ViewCoinState extends State<ViewCoin> {
               ),
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.arrow_downward,
                     size: 25,
                     color: kSecondaryColor,
@@ -254,7 +259,7 @@ class _ViewCoinState extends State<ViewCoin> {
               ),
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.swap_horizontal_circle,
                     size: 25,
                     color: kSecondaryColor,
@@ -269,7 +274,7 @@ class _ViewCoinState extends State<ViewCoin> {
               ),
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.money_sharp,
                     size: 25,
                     color: kSecondaryColor,
@@ -288,3 +293,6 @@ class _ViewCoinState extends State<ViewCoin> {
         ),
       );
 }
+
+
+

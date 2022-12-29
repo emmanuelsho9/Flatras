@@ -1,9 +1,13 @@
 import 'package:flatra/helpers/all_controllers.dart';
 import 'package:flatra/helpers/routes_helper.dart';
+import 'package:flatra/setting/History/History.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+
+import 'KnowTheCoin/coinNow.dart';
+import 'features/buy_crypto/screens/enter_pin_screen.dart';
 
 void main() async {
   await GetStorage.init();
@@ -29,6 +33,9 @@ class MyApp extends StatelessWidget {
               ),
               initialRoute: RouteHelpers.getHomeRoute(),
               getPages: RouteHelpers.routes,
+
+          // home: EnterPinScreen(),
+
             ));
   }
 }

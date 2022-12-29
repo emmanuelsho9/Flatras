@@ -11,6 +11,8 @@ import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../../common_widgets/testing/homeTap.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -22,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   late PageController _pageController;
   final pageController2 = PageController();
   var selected = 0;
-
+  TabController? _Tabcontroller;
   @override
   void initState() {
     _pageController = PageController();
@@ -48,12 +50,12 @@ class _HomeScreenState extends State<HomeScreen> {
         child: const Icon(Icons.message),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 27),
+        padding: const EdgeInsets.symmetric(horizontal: 27),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Gap(80),
-            const WelcomeHeader(),
+             SizedBox(height: MediaQuery.of(context).size.height/15,),
+             WelcomeHeader(name: "Oluwaseun", welcome: "Welcome"),
             const Gap(20),
             Cards(pageController: _pageController),
             const Gap(8),
@@ -61,46 +63,51 @@ class _HomeScreenState extends State<HomeScreen> {
             const Gap(10),
             const WalletSection(),
             const Gap(20),
+            // Expanded(child: TapHome())
+
             SizedBox(
               height: 30,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
-                itemBuilder: (context, index) => GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      selected = index;
-                      pageController2.jumpToPage(index);
-                    });
-                  },
-                  child: Column(
-                    children: [
-                      Container(
-                        alignment: Alignment.center,
-                        padding: const EdgeInsets.only(right: 10),
-                        child: Text(
-                          categories[index],
-                          style: Styles.textStyle.copyWith(
-                              color: index == selected
-                                  ? kPrimaryColor
-                                  : Colors.black,
-                              fontWeight: FontWeight.bold),
+                itemBuilder: (context, index) {
+                  return  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selected = index;
+                        pageController2.jumpToPage(index);
+                      });
+                    },
+                    child: Column(
+                      children: [
+                        Container(
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.only(right: 10),
+                          child: Text(
+                            categories[index],
+                            style: Styles.textStyle.copyWith(
+                                color: index == selected
+                                    ? kPrimaryColor
+                                    : Colors.black,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
-                      ),
-                      const Gap(2),
-                      Visibility(
-                        visible: index == selected,
-                        child: Container(
-                          height: 3,
-                          width: 25,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(40),
-                              color: kPrimaryColor),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+                        const Gap(2),
+                        Visibility(
+                          visible: index == selected,
+                          child: Container(
+                            height: 3,
+                            width: 25,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(40),
+                                color: kPrimaryColor),
+                          ),
+                        )
+                      ],
+                    ),
+                  );
+
+                }
               ),
             ),
             Expanded(
@@ -141,6 +148,7 @@ class WalletSection extends StatelessWidget {
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 25)),
+
         ],
       ),
     );

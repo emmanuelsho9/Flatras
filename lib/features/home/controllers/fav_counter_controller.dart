@@ -24,7 +24,7 @@ class FavCounterController extends GetxController {
           "${coin.toUpperCase()} Already exists in Watchlist",
           backgroundColor: Colors.yellow.shade900,
           colorText: Colors.white,
-          icon: Icon(
+          icon: const Icon(
             Icons.dangerous,
             size: 30,
             color: Colors.white,
@@ -35,7 +35,7 @@ class FavCounterController extends GetxController {
           "Success Message", "${coin.toUpperCase()} Added Successfully",
           backgroundColor: kPrimaryColor,
           colorText: Colors.white,
-          icon: Icon(
+          icon: const Icon(
             Icons.check_circle,
             size: 30,
             color: Colors.white,

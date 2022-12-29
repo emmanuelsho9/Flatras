@@ -1,20 +1,24 @@
-import 'package:flatra/common_widgets/custom_widgets.dart';
-import 'package:flatra/features/buy_crypto/models/paymethodMethods.dart';
-import 'package:flatra/helpers/routes_helper.dart';
-import 'package:flatra/utils/colors.dart';
-import 'package:flatra/utils/layouts.dart';
-import 'package:flatra/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../../../common_widgets/custom_widgets.dart';
+import '../../../common_widgets/myCommentWidgets/ContainerBtnContainer.dart';
+import '../../../utils/styles.dart';
+import '../models/paymethodMethods.dart';
+import 'enter_pin_screen.dart';
 
 class PaymentMethod extends StatelessWidget {
-  const PaymentMethod({super.key});
+   PaymentMethod({Key? key,
+
+
+   }) : super(key: key);
+
+
 
   @override
   Widget build(BuildContext context) {
-    final size = AppLayout.getSize(context);
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -42,6 +46,8 @@ class PaymentMethod extends StatelessWidget {
             children: [
               Column(
                 children: [
+
+
                   Text(
                     "Select the Credit Card \nyou Wish to Make your Purchase",
                     textAlign: TextAlign.center,
@@ -60,25 +66,18 @@ class PaymentMethod extends StatelessWidget {
                       shrinkWrap: true,
                       itemCount: paymentMethodModel.length,
                       itemBuilder: (BuildContext context, int index) => InkWell(
-                            onTap: () {
-                              print("Hello World" + index.toString());
-                            },
-                            child: PaymentMethodWidget(
-                                cardDetails: paymentMethodModel[index]),
-                          ))
+                        onTap: () {
+                          print("Hello World" + index.toString());
+                        },
+                        child: PaymentMethodWidget(
+                            cardDetails: paymentMethodModel[index]),
+                      ))
                 ],
               ),
               const Gap(40),
-              PrimaryButtonWidget(
-                  size: size,
-                  text: "Proceed",
-                  press: () => Get.toNamed(
-                        RouteHelpers.getCryptoEnterPin(),
-                        arguments: [
-                          {"amount_to_pay": 1}
-                        ],
-                      ),
-                  isBorder: true)
+              ContainerBtn(radius: 10, onTap: () {
+                Get.to(EnterPinScreen());
+              },color: Colors.white, Textdata: "Proceed", Boxcolor: const Color(0xFF7F23A8),)
             ],
           )),
     );

@@ -1,9 +1,12 @@
 import 'package:flatra/common_widgets/custom_widgets.dart';
+import 'package:flatra/common_widgets/myCommentWidgets/ContainerBtnContainer.dart';
 import 'package:flatra/utils/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+
+import '../../../common_widgets/enter_pin_pad.dart';
 
 class EnterPinScreen extends StatelessWidget {
   const EnterPinScreen({super.key});
@@ -54,7 +57,13 @@ class EnterPinScreen extends StatelessWidget {
                 ),
               ),
               const Gap(30),
-              EnterPinScreen()
+             // EnterPinScreen()
+
+              EnterPinPad(onNumberSelected: (String j) {
+
+              },),
+             const Gap(38),              ContainerBtn(radius: 10, color: Colors.white, Textdata: "Proceed", Boxcolor: const Color(0xFF7F23A8),)
+
             ],
           ),
         ));

@@ -11,6 +11,9 @@ import 'package:flatra/features/splashscreen/screens/splashscreen.dart';
 import 'package:flatra/features/view_token/screens/view_coin.dart';
 import 'package:get/get.dart';
 
+import '../Wallet/Purchase Smmary.dart';
+import '../setting/Settings.dart';
+
 class RouteHelpers {
   static String home = "/";
   static String onboardingScreen = "/onboardingScreen";
@@ -22,6 +25,8 @@ class RouteHelpers {
   static String buyCrypto = "/byCrypto";
   static String cryptoPaymentMethod = "/cryptoPaymentMethod";
   static String cryptoEnterPin = "/cryptoEnterPin";
+  static String settingsDetail = "/cryptoEnterPin";
+  static String purchaseSmmary = "/cryptoEnterPin";
 
   static String getHomeRoute() => home;
   static String getOnboardingRoute() => onboardingScreen;
@@ -33,6 +38,9 @@ class RouteHelpers {
   static String getBuyCrypto() => buyCrypto;
   static String getCryptoPaymentMethod() => cryptoPaymentMethod;
   static String getCryptoEnterPin() => cryptoEnterPin;
+  static String getSettingsDetail() => settingsDetail;
+  static String getpurchaseSmmary() => purchaseSmmary;
+
 
   //Routes List
   static List<GetPage> routes = [
@@ -40,37 +48,37 @@ class RouteHelpers {
         name: home,
         page: () => const LetBeginScreen(),
         transition: Transition.fade,
-        transitionDuration: Duration(seconds: 1)),
+        transitionDuration: const Duration(seconds: 1)),
     GetPage(
         name: onboardingScreen,
         page: () => const OnBoardingScreen(),
         transition: Transition.fade,
-        transitionDuration: Duration(seconds: 1)),
+        transitionDuration: const Duration(seconds: 1)),
     GetPage(
         name: congratulationScreen,
         page: () => const CongratulationScreen(),
         transition: Transition.fade,
-        transitionDuration: Duration(seconds: 1)),
+        transitionDuration: const Duration(seconds: 1)),
     GetPage(
         name: loginScreen,
         page: () => const LoginScreen(),
         transition: Transition.fade,
-        transitionDuration: Duration(seconds: 1)),
+        transitionDuration: const Duration(seconds: 1)),
     GetPage(
         name: dashboardScreen,
         page: () => const HomeScreen(),
         transition: Transition.fade,
-        transitionDuration: Duration(seconds: 1)),
+        transitionDuration: const Duration(seconds: 1)),
     GetPage(
         name: bottomNavBar,
         page: () => const BottomBar(),
         transition: Transition.fade,
-        transitionDuration: Duration(seconds: 1)),
+        transitionDuration: const Duration(seconds: 1)),
     GetPage(
         name: viewCoinDetails,
-        page: () => const ViewCoin(),
+        page: () =>  ViewCoin(),
         transition: Transition.rightToLeft,
-        transitionDuration: Duration(seconds: 1)),
+        transitionDuration: const Duration(seconds: 1)),
     GetPage(
         name: buyCrypto,
         page: () => const BuyCrytoScreen(),
@@ -78,13 +86,23 @@ class RouteHelpers {
         transitionDuration: Duration(seconds: 1)),
     GetPage(
         name: cryptoPaymentMethod,
-        page: () => const PaymentMethod(),
+        page: () =>  PaymentMethod(),
         transition: Transition.fade,
         transitionDuration: Duration(seconds: 1)),
     GetPage(
         name: cryptoEnterPin,
-        page: () => const EnterPinScreen(),
+        page: () =>  EnterPinScreen(),
         transition: Transition.fade,
+        transitionDuration: Duration(seconds: 1)),
+    GetPage(
+        name: settingsDetail,
+        page: () =>  SettingsDetail(),
+        transition: Transition.fade,
+        transitionDuration: Duration(seconds: 1)),
+    GetPage(
+        name: purchaseSmmary,
+        page: () =>  PurchaseSmmary(),
         transitionDuration: Duration(seconds: 1)),
   ];
 }
+

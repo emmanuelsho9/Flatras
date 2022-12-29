@@ -1,5 +1,6 @@
 import 'package:flatra/common_widgets/custom_widgets.dart';
 import 'package:flatra/common_widgets/numerical_pad.dart';
+import 'package:flatra/features/buy_crypto/screens/payment_method.dart';
 import 'package:flatra/helpers/routes_helper.dart';
 import 'package:flatra/utils/colors.dart';
 import 'package:flatra/utils/layouts.dart';
@@ -8,6 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+
+import '../../../Wallet/Buy/Purchase Smmary.dart';
+import '../../../Wallet/Purchase Smmary.dart';
 
 class BuyCrytoScreen extends StatelessWidget {
   const BuyCrytoScreen({super.key});
@@ -19,6 +23,10 @@ class BuyCrytoScreen extends StatelessWidget {
     var amount = 0.obs;
     RxDouble convertedAmount = 0.0.obs;
 
+    String CoinName =  "1 ${data[0][0].name} = ${NumberFormat.currency(name: 'NGN').format(data[0][0].currentPrice)} ";
+    String CoinNName = "${data[0][0].name.toString()}";
+    String Value = " ${NumberFormat.currency(name: 'NGN').format(data[0][0].currentPrice)}";
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -27,7 +35,7 @@ class BuyCrytoScreen extends StatelessWidget {
         leading: Padding(
           padding: const EdgeInsets.only(left: 16),
           child: IconButton(
-            icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+            icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
             onPressed: () => Get.back(),
           ),
         ),
@@ -48,7 +56,11 @@ class BuyCrytoScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                    "1 ${data[0][0].name} = ${NumberFormat.currency(name: 'NGN').format(data[0][0].currentPrice)} ",
+                    CoinName,
+                    style: Styles.textStyle
+                        .copyWith(color: kPrimaryColor, fontSize: 18)),
+                Text(
+                    CoinNName,
                     style: Styles.textStyle
                         .copyWith(color: kPrimaryColor, fontSize: 18)),
                 Row(
@@ -121,12 +133,20 @@ class BuyCrytoScreen extends StatelessWidget {
             PrimaryButtonWidget(
                 size: size,
                 text: "Proceed",
-                press: () => Get.toNamed(
-                      RouteHelpers.getCryptoPaymentMethod(),
-                      arguments: [
-                        {"amount_to_pay": amount}
-                      ],
-                    ),
+                press: () => Get.to(
+                //   PaymentMethod(
+                //
+                //     amountNow: amount.string.toString(),
+                //   coinName: CoinNName, Value: Value,
+                //
+                //
+                // ),
+                  PurchaseSmmaryT(
+                    amountNow: amount.string.toString(),
+                       coinName: CoinNName, Value: Value,
+                  ),
+                  arguments: amount,
+                 ),
                 isBorder: true)
           ],
         ),
