@@ -12,14 +12,14 @@ class CustomWidgets {
   static Widget textField(String title,
       {bool isPassword = false,
         TextInputType? keyboardType,
-        bool obscureText = true,
-        Function()? IconOnPressed,
-        int? length,
+      bool obscureText = true,
+         Function()? IconOnPressed,
+      int? length,
         required IconData suffixIcon,
-        String? hint,
-        Function()? passwordVisibilityPress,
-        TextEditingController? textController,
-        int lines = 1}) {
+      String? hint,
+      Function()? passwordVisibilityPress,
+      TextEditingController? textController,
+      int lines = 1}) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 2),
       child: Column(
@@ -54,7 +54,7 @@ class CustomWidgets {
                     icon: Icon(suffixIcon)
                 ),
                 contentPadding:
-                EdgeInsets.symmetric(vertical: 14, horizontal: 10),
+                    EdgeInsets.symmetric(vertical: 14, horizontal: 10),
                 isDense: true,
               ),
             ),
@@ -122,10 +122,10 @@ class LoginAttributesWidget extends StatelessWidget {
 class PrimaryButtonWidget extends StatelessWidget {
   const PrimaryButtonWidget(
       {Key? key,
-        required this.size,
-        required this.text,
-        required this.press,
-        required this.isBorder})
+      required this.size,
+      required this.text,
+      required this.press,
+      required this.isBorder})
       : super(key: key);
 
   final Size size;
@@ -166,7 +166,7 @@ class PaymentMethodWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(
-          () => Container(
+      () => Container(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         margin: const EdgeInsets.only(bottom: 10),
         height: 60,

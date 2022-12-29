@@ -8,21 +8,28 @@ import 'package:flatra/utils/layouts.dart';
 import 'package:flatra/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+import '../../Escrow/Escrow Details.dart';
+import '../../Escrow/Escrow Information.dart';
+import 'Messages/Messages.dart';
+import 'homePageView.dart';
+
+class HomeFlatra extends StatefulWidget {
+  const HomeFlatra({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeFlatra> createState() => _HomeFlatraState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeFlatraState extends State<HomeFlatra> {
   late PageController _pageController;
   final pageController2 = PageController();
   var selected = 0;
-
+  TabController? _Tabcontroller;
   @override
   void initState() {
     _pageController = PageController();
@@ -42,76 +49,24 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Add your onPressed code here!
+          Get.to(EscrowInformation());
         },
         backgroundColor: kPrimaryColor,
-        child: const Icon(Icons.message),
+        child: const Icon(Icons.add),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 27),
+        padding: const EdgeInsets.symmetric(horizontal: 27),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Gap(80),
-             WelcomeHeader(),
+            WelcomeHeader(name: "Flatra Escrow", welcome: ""),
             const Gap(20),
-            Cards(pageController: _pageController),
-            const Gap(8),
-            DotIndicators(pageController: _pageController),
-            const Gap(10),
-            const WalletSection(),
-            const Gap(20),
-            SizedBox(
-              height: 30,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: categories.length,
-                itemBuilder: (context, index) => GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      selected = index;
-                      pageController2.jumpToPage(index);
-                    });
-                  },
-                  child: Column(
-                    children: [
-                      Container(
-                        alignment: Alignment.center,
-                        padding: const EdgeInsets.only(right: 10),
-                        child: Text(
-                          categories[index],
-                          style: Styles.textStyle.copyWith(
-                              color: index == selected
-                                  ? kPrimaryColor
-                                  : Colors.black,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      const Gap(2),
-                      Visibility(
-                        visible: index == selected,
-                        child: Container(
-                          height: 3,
-                          width: 25,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(40),
-                              color: kPrimaryColor),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-                child: SectionList(
-                    selected: selected,
-                    callback: (int index) {
-                      setState(() {
-                        selected = index;
-                      });
-                    },
-                    pageController: pageController2))
+            Expanded(child: HomePageView()),
+
+
+            // Expanded(child: TapHome())
+
           ],
         ),
       ),
@@ -141,6 +96,7 @@ class WalletSection extends StatelessWidget {
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 25)),
+
         ],
       ),
     );
@@ -165,7 +121,7 @@ class DotIndicators extends StatelessWidget {
         controller: _pageController,
         count: cardList.length,
         axisDirection: Axis.horizontal,
-        effect: ExpandingDotsEffect(
+        effect: const ExpandingDotsEffect(
           spacing: 5.0,
           radius: 10,
           dotWidth: 10.0,
