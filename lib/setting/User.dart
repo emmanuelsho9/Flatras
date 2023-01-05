@@ -4,11 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-import '../Escrow/Escrow Information.dart';
 import '../Flatra Crypto/BottonBarFlatraC.dart';
-import '../Flatra Crypto/Flatra Crypto.dart';
-import '../Flatra Crypto/Home/homeFlatra.dart';
-import '../helpers/routes_helper.dart';
 import 'Refer a Friend/Refer a Friend.dart';
 import 'Settings.dart';
 
@@ -26,26 +22,24 @@ class _SettingUserState extends State<SettingUser> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          child: Column(
+          height: MediaQuery.of(context).size.height,
+          padding: const EdgeInsets.only(left: 15.0, right: 15),
+          child: Container(
+            child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children:   [
-              SizedBox(height: MediaQuery.of(context).size.height/15,),
+              const Gap(47),
               const FirstSectionWithCircleImage(),
              const Gap(47),
                EscrowSecurePayment(headiing: "Escrow Secure Payment" ,
                   onTap: () {
                  Get.to(FlatraCryptoBottomBar());
-                 //TODO:Escrow
-                    // Navigator.push(context, MaterialPageRoute(builder: (context) => EscrowInformation(),));
                   },
                   subHeading: "This contains the general information about the\n business and how it should work"),
               const Gap(18),
               EscrowSecurePayment(headiing: "Referal ID" ,
                   onTap: () {
-                    //TODO:Referal
                     Get.to(ReferaFriend());
                   },
                   subHeading: "This contains the general information about the\n business and how it should work"),
@@ -67,7 +61,6 @@ class _SettingUserState extends State<SettingUser> {
                 onTap: () => null,
                 child: Row(
                   children: [
-                   const Gap(26),
                     Image.asset("assets/images/img_4.png", ),
                    const Gap(6),
                     const Text("Log Out", style: TextStyle(
@@ -80,7 +73,7 @@ class _SettingUserState extends State<SettingUser> {
               )
             ],
           ),
-        ),
+          ),
         ),
 
 
@@ -109,34 +102,29 @@ class EscrowSecurePayment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Row(
-          children:  [
-             Gap(26),
-            InkWell(
-              onTap: onTap,
-              child: Text("$headiing", style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600
-              ),),
-            ),
-          ],
-        ),
-        Row(
-          children:  [
-            const Gap(26),
-            Text("$subHeading",
-              textAlign: TextAlign.start,
-              style: const TextStyle(
-              fontSize: 12,
+    return Container(
 
-              fontWeight: FontWeight.w400
-            ),),
-          ],
-        ),
-      ],
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const Gap(20),
+              InkWell(
+           onTap: onTap,
+           child: Text("$headiing", style: const TextStyle(
+             fontSize: 18,
+             fontWeight: FontWeight.w600
+           ),),
+              ),
+          const Gap(4),
+          Text("$subHeading",
+            textAlign: TextAlign.start,
+            style: const TextStyle(
+            fontSize: 12,
+
+            fontWeight: FontWeight.w400
+          ),),
+        ],
+      ),
     );
   }
 }
@@ -155,7 +143,6 @@ class FirstSectionWithCircleImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Gap(24),
         Column(
           children: [
             Stack(

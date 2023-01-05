@@ -4,11 +4,13 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-import '../common_widgets/myCommentWidgets/ContainerBtnContainer.dart';
-import 'payment/Payment Option.dart';
+import '../../common_widgets/myCommentWidgets/ContainerBtnContainer.dart';
+import '../payment/Payment Option.dart';
+import 'congrualtion.dart';
 
-class EscrowDetails extends StatelessWidget {
-  const EscrowDetails({Key? key}) : super(key: key);
+
+class EscrowDetailsSeller extends StatelessWidget {
+  const EscrowDetailsSeller({Key? key}) : super(key: key);
 
 
   @override
@@ -53,12 +55,12 @@ class EscrowDetails extends StatelessWidget {
                       ],
                     ),
                     const Gap(15),
-                    const sellerNameAndEmailbuyer(),
+                    const sellerNameAndEmail(),
                     const Gap(10),
 
-                    const amountMilestonesbuyer(),
+                    const amountMilestones(),
                     const Gap(10),
-                    const descroptionInfobuyer(),
+                    const descroptionInfo(),
                     const Gap(29),
                   ],
                 ),
@@ -69,7 +71,7 @@ class EscrowDetails extends StatelessWidget {
               )),
               const Gap(15),
 
-              const Flexible(child: transcationFeeProcessbuyer()),
+               const Flexible(child: transcationFeeProcess()),
               const Flexible(
 
                   child: Gap(10))
@@ -84,9 +86,8 @@ class EscrowDetails extends StatelessWidget {
   }
 }
 
-
-class transcationFeeProcessbuyer extends StatelessWidget {
-  const transcationFeeProcessbuyer({
+class transcationFeeProcess extends StatelessWidget {
+  const transcationFeeProcess({
     Key? key,
   }) : super(key: key);
 
@@ -118,7 +119,7 @@ class transcationFeeProcessbuyer extends StatelessWidget {
             color: const Color(0xFFFFFFff),
             Boxcolor: const Color(0xFF7F23A8),
             onTap: () {
-              Get.to(const PaymentOption());
+              Get.to(const sellerCongratulation());
             },
           ),
         ],
@@ -127,8 +128,8 @@ class transcationFeeProcessbuyer extends StatelessWidget {
   }
 }
 
-class descroptionInfobuyer extends StatelessWidget {
-  const descroptionInfobuyer({
+class descroptionInfo extends StatelessWidget {
+  const descroptionInfo({
     Key? key,
   }) : super(key: key);
 
@@ -174,9 +175,8 @@ class descroptionInfobuyer extends StatelessWidget {
   }
 }
 
-
-class amountMilestonesbuyer extends StatelessWidget {
-  const amountMilestonesbuyer({
+class amountMilestones extends StatelessWidget {
+  const amountMilestones({
     Key? key,
   }) : super(key: key);
 
@@ -191,7 +191,7 @@ class amountMilestonesbuyer extends StatelessWidget {
       ),
       child: Column(
         children: [
-          const  Gap(19),
+        const  Gap(19),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [
@@ -227,8 +227,8 @@ class amountMilestonesbuyer extends StatelessWidget {
   }
 }
 
-class sellerNameAndEmailbuyer extends StatelessWidget {
-  const sellerNameAndEmailbuyer({
+class sellerNameAndEmail extends StatelessWidget {
+  const sellerNameAndEmail({
     Key? key,
   }) : super(key: key);
 
@@ -247,18 +247,18 @@ class sellerNameAndEmailbuyer extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [
-              Text("Buyer Name", style: TextStyle(
+              Text("Seller Name", style: TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: 14,
                 color: Color(0xFF7F23A8),
               ),),
-              Text("Buyer Name", style: TextStyle(
+              Text("Seller Name", style: TextStyle(
                 fontWeight: FontWeight.w400,
                 fontSize: 14,
               ),),
             ],
           ),
-          const  Gap(10),
+        const  Gap(10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [
@@ -278,4 +278,3 @@ class sellerNameAndEmailbuyer extends StatelessWidget {
     );
   }
 }
-

@@ -1,23 +1,58 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flatra/Escrow/Buyer%20Requirements.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:intl/intl.dart';
 
-import '../Savings Screen/Active/Fixed Deposit.dart';
-import '../common_widgets/myCommentWidgets/ContainerBtnContainer.dart';
-import '../common_widgets/myCommentWidgets/EditTextMyOwn.dart';
-import '../setting/Appearance/Appearance.dart';
-import 'Escrow Details.dart';
+import '../../Wallet/Buy/CoinsCardBuyer.dart';
+import '../../Wallet/Buy/buyerListOfShowBottonSheet.dart';
+import '../../common_widgets/myCommentWidgets/ContainerBtnContainer.dart';
+import '../../common_widgets/myCommentWidgets/EditTextMyOwn.dart';
+import '../../features/home/controllers/coin_data_controller.dart';
+import '../../features/home/models/coin_data.dart';
+import '../../setting/Appearance/Appearance.dart';
+import '../../utils/colors.dart';
+import '../../utils/styles.dart';
+import '../Escrow Details.dart';
+import 'EscrowDetailsSeller.dart';
 
-class TermsofTrade extends StatefulWidget {
-   TermsofTrade({Key? key}) : super(key: key);
+
+class SellerTermsofTrade extends StatefulWidget {
+   SellerTermsofTrade({Key? key}) : super(key: key);
 
   @override
-  State<TermsofTrade> createState() => _TermsofTradeState();
+  State<SellerTermsofTrade> createState() => _SellerTermsofTradeState();
 }
 
-class _TermsofTradeState extends State<TermsofTrade> {
+class _SellerTermsofTradeState extends State<SellerTermsofTrade> {
+
+  final CoinDataController LcoinDataController = Get.put(CoinDataController());
+
   DateTime _selectedDate = DateTime.now();
+
+
+  // final CoinDataController result = Get.put(CoinDataController());
+
+  var stringFromActivity;
+
+  Future _startActivity() async {
+
+     var results = await showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (context) => RetuernContentbuyerListOfShowBottonSheet());
+
+    if (results != null) {
+      setState(() {
+         stringFromActivity = results[0];
+        print(stringFromActivity);
+      });
+    }
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -81,25 +116,31 @@ class _TermsofTradeState extends State<TermsofTrade> {
                       ),
 
                       Flexible(
-                        child: Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color:  Color(0xFF7F23A8),
-                            borderRadius: BorderRadius.circular(10),
+                        child: InkWell(
+                          onTap: () async {
+                            _startActivity();
+
+                           },
+                          child: Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color:  Color(0xFF7F23A8),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Center(child: Row(
+                              children:  [
+                                const Icon(Icons.keyboard_arrow_down, color: Colors.white,),
+                                const  Gap(3),
+                                 Text(stringFromActivity.toString(), style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.white,
+                                    fontSize: 14
+                                ),),
+                                const  Gap(5),
+                                Image.asset("assets/png/img_1.png", width: 14, height: 14,),
+                              ],
+                            )),
                           ),
-                          child: Center(child: Row(
-                            children:  [
-                              const Icon(Icons.keyboard_arrow_down, color: Colors.white,),
-                              const  Gap(3),
-                              const Text("USD", style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.white,
-                                  fontSize: 14
-                              ),),
-                              const  Gap(5),
-                              Image.asset("assets/png/img_1.png", width: 14, height: 14,),
-                            ],
-                          )),
                         ),
                       ),
                     ],
@@ -261,7 +302,7 @@ class _TermsofTradeState extends State<TermsofTrade> {
                     color: Color(0xFFFFFFff),
                     Boxcolor: Color(0xFF7F23A8),
                     onTap: () {
-                      Get.to(EscrowDetails());
+                      Get.to(EscrowDetailsSeller());
                     },
                   ),
                   const Gap(78),
@@ -277,7 +318,6 @@ class _TermsofTradeState extends State<TermsofTrade> {
     );
   }
 }
-
 
 
 class ContainerDrop extends StatelessWidget {
@@ -339,63 +379,158 @@ class ContainerDrop extends StatelessWidget {
 
 
 
-
-
-class EditTextMyOwnTT extends StatelessWidget {
-  EditTextMyOwnTT({
-    Key? key,this.height,this.Boxcolor,
-    required this.Boardcolor,
-    this.hintText,
-    this.Hintcolor,
-    this.IcononPressed,
-    this.Suffixicon,
-    this.keyboardType,
-    required this.obscureText,
-    this.TextFieldenabled,
-    this.controller,
-  });
-  double? height;
-  Color? Boxcolor;
-  Color Boardcolor = const Color(0xFF000000);
-  String? hintText;
-  Color? Hintcolor;
-  Function()? IcononPressed;
-  IconData? Suffixicon;
-  TextInputType? keyboardType;
-  bool obscureText = false;
-  bool? TextFieldenabled;
-  TextEditingController? controller;
-
+class RetuernContentbuyerListOfShowBottonSheet extends StatelessWidget {
+  RetuernContentbuyerListOfShowBottonSheet({super.key});
+  final CoinDataController coinDataController = Get.put(CoinDataController());
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height,
-      width: 270,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Boxcolor,
-          border: Border.all(
-            color: Boardcolor,
-          )
-      ),
+      height: 500,
+      decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(40), topLeft: Radius.circular(40)),
+          color: kPrimaryColor),
       child: Padding(
-        padding: const EdgeInsets.only(left: 8.0, right: 8),
-        child: TextFormField(
-          enabled: TextFieldenabled,
-          controller: controller,
-          keyboardType: keyboardType,
-          obscureText: obscureText,
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            hintText: hintText,
-            hintStyle: TextStyle(
-              color: Hintcolor,
-
+        padding: const EdgeInsets.symmetric(horizontal: 27),
+        child: Column(
+          children: [
+            const Gap(30),
+            Text(
+              "Select a Token",
+              style: Styles.textStyle
+                  .copyWith(color: Colors.white, fontWeight: FontWeight.w400),
             ),
-            suffixIcon: IconButton(onPressed: IcononPressed, icon: Icon(Suffixicon, color: Colors.black,)),
-          ),
+            const Gap(10),
+            Container(
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 4, right: 4),
+                child: TextField(
+                  onChanged: (value) =>
+                      coinDataController.getFilteredCoinData(value),
+                  decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Enter a Token name...',
+                      hintStyle: TextStyle(color: Colors.grey[700]),
+                      prefixIcon: const Icon(
+                        Icons.search_rounded,
+                        color: Colors.black,
+                      ),
+                      prefixIconColor: Colors.black),
+                ),
+              ),
+            ),
+            const Gap(10),
+            SizedBox(
+              height: 300,
+              child: Obx(
+                    () => coinDataController.checkLoadingFilter().isTrue
+                    ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+                    : ListView.builder(
 
+                  scrollDirection: Axis.vertical,
+                  itemCount: coinDataController.coinDataFilterList.length,
+                  itemBuilder: (context, index) {
+                    return TTCoinList(coin: coinDataController.coinDataFilterList[index]);
+                  },
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+class TTCoinList extends StatelessWidget {
+  const TTCoinList({
+    Key? key,
+    required this.coin,
+  }) : super(key: key);
+
+  final CoinData coin;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: InkWell(
+        onTap: () {
+          Get.back(
+
+            result: [coin.name, coin.currentPrice],
+          );
+        },
+
+
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                SizedBox(
+                  height: 35,
+                  width: 35,
+                  child: CachedNetworkImage(
+                    imageUrl: coin.image.toString(),
+                    progressIndicatorBuilder:
+                        (context, url, downloadProgress) =>
+                        CircularProgressIndicator(
+                            value: downloadProgress.progress),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                  ),
+                ),
+                const Gap(5),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(coin.name,
+                        style: Styles.headLineStyle3.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 14)),
+                    Text(coin.symbol.toUpperCase(),
+                        style: Styles.headLineStyle3.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 14)),
+                  ],
+                )
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                    NumberFormat.simpleCurrency(name: 'NGN')
+                        .format(coin.currentPrice),
+                    style: Styles.headLineStyle3.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 12)),
+                Text(
+                    coin.priceChangePercentage24H.toDouble() < 0
+                        ? '-' "${coin.priceChangePercentage24H.toDouble()}%"
+                        : '+' "${coin.priceChangePercentage24H.toDouble()}%",
+                    style: Styles.headLineStyle3.copyWith(
+                        color: coin.priceChangePercentage24H.toDouble() < 0
+                            ? Colors.red
+                            : Colors.green,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 12)),
+              ],
+            )
+          ],
         ),
       ),
     );

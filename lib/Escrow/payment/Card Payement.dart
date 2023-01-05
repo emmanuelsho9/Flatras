@@ -19,29 +19,28 @@ class CardPaymentE extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
+        centerTitle: true,
         backgroundColor: Colors.white,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text("Payment Option", style: TextStyle(
-                fontWeight:FontWeight.w600,
-                fontSize: 16,
-                color: Colors.black
-            ),),
-          ],
-        ),
+        title: const Text("Payment Option", style: TextStyle(
+            fontWeight:FontWeight.w600,
+            fontSize: 16,
+            color: Colors.black
+        ),),
         leading: IconButton(onPressed: (){
           Navigator.pop(context);
         },
             icon: const
             Icon(Icons.arrow_back_ios_new_sharp, color: Colors.black,)),
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 19.0,right: 19, top: 50),
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
         child: Column(
           children: [
-            Container(
-              child: const Text("Select the credit card\n"
+            const Gap(30),
+              const FittedBox(
+              child: Text("Select the credit card\n"
                   "you wish to use to make purchases", textAlign: TextAlign.center, style: TextStyle(
                   fontWeight:FontWeight.w400,
                   fontSize: 14,

@@ -42,15 +42,19 @@ class _SelectedCardTwoState extends State<SelectedCardTwo> {
        child: Center(
          child: Column(
            children: [
-             Gap(40),
-             Text("Select the credit card\n"
-                 "you wish to use to make purchases", textAlign: TextAlign.center, style: TextStyle(
-                 fontWeight:FontWeight.w400,
-                 fontSize: 14,
-                 color: Colors.black
-             ),),
-             Gap(40),
-             Expanded(flex: 1,child: ListOfCard()),
+             const Gap(40),
+ const             FittedBox(
+               child: Text("Select the credit card\n"
+                   "you wish to use to make purchases", textAlign: TextAlign.center, style: TextStyle(
+                   fontWeight:FontWeight.w400,
+                   fontSize: 14,
+                   color: Colors.black
+               ),),
+             ),
+             const Gap(40),
+             Flexible(
+                 fit: FlexFit.loose,
+                 child: ListOfCard()),
              const Gap(0),
              Column(
                children: [
@@ -469,40 +473,37 @@ class ListOfCard extends StatelessWidget {
       backgroundColor: Colors.white,
         body: Container(
           child: ListView.builder(itemCount: currenyList.length,itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: Container(
-                height: 70,
-                width: 320,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                      color: Color(0xFF7F23A8),
-                    )
-                ),
-                child: Card(
-                  elevation: 0,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+            return Container(
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+              margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    color: Color(0xFF7F23A8),
+                  )
+              ),
+              child: Card(
+                elevation: 0,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
 
-                      Row(
-                        children: [
-                          IconButton(onPressed: (){}, icon: Icon(Icons.album_outlined)),
-                          Gap(22.02),
-                          Image.asset("assets/images/img_13.png.png", height: 40,width: 40,),
-                          Gap(22.02),
-                          Text(currenyList[index].cardNumber,
-                            style: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600
-                            ),),
-                        ],
-                      ),
-                    ],
-                  ),
-
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconButton(onPressed: (){}, icon: Icon(Icons.album_outlined)),
+                        Image.asset("assets/images/img_13.png.png", height: 40,width: 40,),
+                        Text(currenyList[index].cardNumber,
+                          style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600
+                          ),),
+                      ],
+                    ),
+                  ],
                 ),
+
               ),
             );
           },),

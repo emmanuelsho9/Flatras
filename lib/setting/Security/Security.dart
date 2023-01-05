@@ -1,6 +1,8 @@
 import 'package:flatra/common_widgets/myCommentWidgets/Responive/screenResponsive/screenRes.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../../models/seed_phrase.dart';
 import '../Appearance/Appearance.dart';
@@ -35,13 +37,21 @@ class Security extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             EscrowSecurePayment(headiing: "Two Step Verification",
+              onTap: () {
+                Get.to(PhoneNumber());
+              },
               IcononPressed:  () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => PhoneNumber(),));
               },
               subHeading: " Recommended for strong security",),
             EscrowSecurePayment(headiing: "Change Password",
+              icon: Icons.arrow_forward_ios_outlined,
+              onTap: () {
+                Get.to(OldPassword());
+
+              },
               IcononPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => OldPassword(),));
+                Get.to(OldPassword());
+
               },
               subHeading: "Reset your password",),
             EscrowSecurePayment(headiing: "Seed phrase",

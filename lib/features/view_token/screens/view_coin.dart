@@ -15,6 +15,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
+import '../../../Savings Screen/Active/WithdrawActiviteandComplete/WithdrawActiviteandComplete.dart';
 import '../../../common_widgets/testing/Trade.dart';
 import '../../buy_crypto/screens/buy_screen.dart';
 
@@ -242,20 +243,24 @@ class _ViewCoinState extends State<ViewCoin> {
                   )
                 ],
               ),
-              Row(
-                children: [
-                  const Icon(
-                    Icons.arrow_downward,
-                    size: 25,
-                    color: kSecondaryColor,
-                  ),
-                  const Gap(15),
-                  Text(
-                    "Send",
-                    style: Styles.textStyle.copyWith(
-                        color: Colors.white, fontWeight: FontWeight.w400),
-                  )
-                ],
+              InkWell(
+                onTap: () {
+                },
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.arrow_downward,
+                      size: 25,
+                      color: kSecondaryColor,
+                    ),
+                    const Gap(15),
+                    Text(
+                      "Send",
+                      style: Styles.textStyle.copyWith(
+                          color: Colors.white, fontWeight: FontWeight.w400),
+                    )
+                  ],
+                ),
               ),
               Row(
                 children: [
@@ -272,20 +277,26 @@ class _ViewCoinState extends State<ViewCoin> {
                   )
                 ],
               ),
-              Row(
-                children: [
-                  const Icon(
-                    Icons.money_sharp,
-                    size: 25,
-                    color: kSecondaryColor,
-                  ),
-                  const Gap(15),
-                  Text(
-                    "Withdraw",
-                    style: Styles.textStyle.copyWith(
-                        color: Colors.white, fontWeight: FontWeight.w400),
-                  )
-                ],
+              InkWell(
+                onTap: () {
+                  Get.to(WithdrawActiviteandComplete());
+
+                },
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.money_sharp,
+                      size: 25,
+                      color: kSecondaryColor,
+                    ),
+                    const Gap(15),
+                    Text(
+                      "Withdraw",
+                      style: Styles.textStyle.copyWith(
+                          color: Colors.white, fontWeight: FontWeight.w400),
+                    )
+                  ],
+                ),
               ),
               const Gap(30),
             ],

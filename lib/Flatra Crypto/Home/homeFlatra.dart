@@ -55,8 +55,10 @@ class _HomeFlatraState extends State<HomeFlatra> {
         backgroundColor: kPrimaryColor,
         child: const Icon(Icons.add),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 27),
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        padding: const EdgeInsets.only(left: 15.0, right: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

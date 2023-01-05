@@ -34,66 +34,80 @@ class ReferaFriend extends StatelessWidget {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children:  [
-              Gap(100),
-              Image.asset("assets/png/img.png", width: 218.06, height: 171.75,),
-              const Gap(17),
-              Container(
-                child: const Text("Refer a friend and get a bonus \n"
-                    "on your transaction fee when usig Flatra.",textAlign: TextAlign.center, style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                ),),
-              ),
-              const Gap(26),
-               const Text("Referral ID ", textAlign: TextAlign.center, style:
-               TextStyle(
-                  fontSize: 14,
-                  color: Color(0xFF7F23A8),
-                  fontWeight: FontWeight.w700
-              ),),
-              const Gap(6),
-              Text("$referId", textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 20,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children:  [
+             LayoutBuilder(
+               builder: (p0, con) {
+                 return Column(
+                   children: [
+                     Image.asset("assets/png/img.png", width: 218.06, height: 171.75,),
+                     const Gap(17),
+                     Container(
+                       child: const Text("Refer a friend and get a bonus \n"
+                           "on your transaction fee when usig Flatra.",textAlign: TextAlign.center, style: TextStyle(
+                         fontSize: 12,
+                         fontWeight: FontWeight.w400,
+                       ),),
+                     ),
+                     const Gap(26),
+                     const Text("Referral ID ", textAlign: TextAlign.center, style:
+                     TextStyle(
+                         fontSize: 14,
+                         color: Color(0xFF7F23A8),
+                         fontWeight: FontWeight.w700
+                     ),),
+                     const Gap(6),
+                     Text("$referId", textAlign: TextAlign.center,
+                       style: const TextStyle(
+                           fontSize: 20,
 
-                  color: Color(0xFF000000),
-                  fontWeight: FontWeight.w400
-              ),),
-              const Gap(7),
-              const Text("Current Bonus: 10%", textAlign: TextAlign.center, style:
-              TextStyle(
-                  fontSize: 14,
-                  color: Color(0xFF7F23A8),
-                  fontWeight: FontWeight.w700
-              ),),
-              const Gap(61),
-              ContainerBtn(
-                onTap: () {
+                           color: Color(0xFF000000),
+                           fontWeight: FontWeight.w400
+                       ),),
+                     const Gap(7),
+                     const Text("Current Bonus: 10%", textAlign: TextAlign.center, style:
+                     TextStyle(
+                         fontSize: 14,
+                         color: Color(0xFF7F23A8),
+                         fontWeight: FontWeight.w700
+                     ),),
+                   ],
+                 );
 
-                },
-                radius: 10,
-                Textdata: "Copy Referral Code",
-                color: Colors.white,
-                fontWeight: FontWeight.w600,
-                Boxcolor: Color(0xFF7F23A8),
-                fontSize: 16,
-              ),
-              const Gap(16),
-              ContainerBtn(
-                onTap: () {
+               },
+             ),
+               Column(
+                 children: [
+                   const Gap(61),
+                   ContainerBtn(
+                     onTap: () {
 
-                },
-                radius: 10,
-                Textdata: "Share Referral Code",
-                color: Colors.white,
-                fontWeight: FontWeight.w600,
-                Boxcolor: Color(0xFF7F23A8),
-                fontSize: 16,
-              ),
-            ],
+                     },
+                     radius: 10,
+                     Textdata: "Copy Referral Code",
+                     color: Colors.white,
+                     fontWeight: FontWeight.w600,
+                     Boxcolor: Color(0xFF7F23A8),
+                     fontSize: 16,
+                   ),
+                   const Gap(16),
+                   ContainerBtn(
+                     onTap: () {
+
+                     },
+                     radius: 10,
+                     Textdata: "Share Referral Code",
+                     color: Colors.white,
+                     fontWeight: FontWeight.w600,
+                     Boxcolor: Color(0xFF7F23A8),
+                     fontSize: 16,
+                   ),
+                 ],
+               ),
+              ],
+            ),
           ),
         ),
       ),

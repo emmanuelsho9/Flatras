@@ -1,6 +1,8 @@
 import 'package:flatra/common_widgets/myCommentWidgets/Responive/screenResponsive/screenRes.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../../../common_widgets/myCommentWidgets/ContainerBtnContainer.dart';
 import '../../../common_widgets/myCommentWidgets/EditTextMyOwn.dart';
@@ -73,7 +75,6 @@ class _bioPageViewTwoState extends State<bioPageViewTwo> {
                   obscureText: false,
                   keyboardType: TextInputType.number,
                   Boardcolor: Color(0xFF7F23A8),
-                  width: double.infinity,
                   height: 50,
                   Boxcolor: Colors.white,
                   Hintcolor: Color(0xFF9B9B9B),
@@ -82,7 +83,7 @@ class _bioPageViewTwoState extends State<bioPageViewTwo> {
                 Gap(30),
                 ContainerBtn(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Confirmotp(),));
+                    Get.to(Confirmotp());
                   },
                   radius: 10,
                   Textdata: "Proceed",

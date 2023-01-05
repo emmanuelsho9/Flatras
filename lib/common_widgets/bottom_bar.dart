@@ -21,8 +21,9 @@ class _BottomBarState extends State<BottomBar> {
   static final List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     Text("Market"),
-    wallet(),
-    SavingsScreenHome(),
+    Text("wallet"),
+     wallet(),
+    // SavingsScreenHome(),
     SettingUser(),
 
   ];

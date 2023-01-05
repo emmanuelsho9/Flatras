@@ -102,7 +102,7 @@ class AppearanceSelector extends StatelessWidget {
         child: Row(
           children: [
             IconButton(onPressed: IcononPressed,icon: const Icon(Icons.circle_outlined),),
-            Gap(17.75),
+           const Gap(17.75),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children:  [

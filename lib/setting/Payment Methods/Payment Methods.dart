@@ -31,8 +31,7 @@ class PaymentMethods extends StatelessWidget {
             icon: const 
             Icon(Icons.arrow_back_ios_new_sharp, color: Colors.black,)),
       ),
-      body: screenResponisive(
-        scaffold: Padding(
+      body: screenResponisive(scaffold: Padding(
           padding: const EdgeInsets.only(left: 15.0, right: 15),
           child: Container(
             width: MediaQuery.of(context).size.width,
@@ -41,7 +40,7 @@ class PaymentMethods extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children:  [
-                  const Gap(100),
+                  const Gap(130),
                   Text(
                     "Add Payment Method",
                     style: Styles.headLineStyle2
@@ -75,8 +74,7 @@ class PaymentMethods extends StatelessWidget {
               ),
             ),
           ),
-        ),
-      )
+        ),)
 
 
     );

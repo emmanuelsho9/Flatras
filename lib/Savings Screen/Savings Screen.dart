@@ -22,6 +22,7 @@ import '../Wallet/Receive/Receive.dart';
 import '../Wallet/Send/Send Crypto.dart';
 import '../Wallet/Walletsection_lists.dart';
 import '../common_widgets/myCommentWidgets/ContainerBtnContainer.dart';
+import '../common_widgets/myCommentWidgets/Responive/screenResponsive/screenRes.dart';
 import '../features/buy_crypto/screens/buy_screen.dart';
 import '../setting/User.dart';
 import '../common_widgets/myCommentWidgets/walletCategories.dart';
@@ -58,80 +59,84 @@ class _SavingsScreenHomeState extends State<SavingsScreenHome> {
     final size = AppLayout.getSize(context);
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Container(
-        width: MediaQuery.of(context).size.width*1,
-        height: MediaQuery.of(context).size.height*1,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 27),
+        body: screenResponisive(scaffold: Padding(
+          padding: const EdgeInsets.only(left: 15.0, right: 15),
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: MediaQuery.of(context).size.height/15,),
-                WelcomeHeader(name: "Savings",welcome: ""),
-                const Gap(47),
-                const WalletSection(),
-                const Gap(40),
-                SizedBox(
-                  height: 30,
-                  child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: SavingScreen.length,
-                      itemBuilder: (context, index) {
-                        return  GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              selected = index;
-                              pageController2.jumpToPage(index);
-                            });
-                          },
-                          child: Column(
-                            children: [
-                              Container(
-                                alignment: Alignment.center,
-                                padding: const EdgeInsets.only(right: 10),
-                                child: Text(
-                                  SavingScreen[index],
-                                  style: Styles.textStyle.copyWith(color: index == selected ? kPrimaryColor : Colors.black, fontWeight: FontWeight.bold),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: MediaQuery.of(context).size.height/15,),
+                      WelcomeHeader(name: "Savings",welcome: ""),
+                      const Gap(47),
+                      const WalletSection(),
+                      const Gap(40),
+                      SizedBox(
+                        height: 30,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: SavingScreen.length,
+                            itemBuilder: (context, index) {
+                              return  GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    selected = index;
+                                    pageController2.jumpToPage(index);
+                                  });
+                                },
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      alignment: Alignment.center,
+                                      padding: const EdgeInsets.only(right: 10),
+                                      child: Text(
+                                        SavingScreen[index],
+                                        style: Styles.textStyle.copyWith(color: index == selected ? kPrimaryColor : Colors.black, fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                    const Gap(2),
+                                    Visibility(
+                                      visible: index == selected,
+                                      child: Container(
+                                        height: 3,
+                                        width: 40,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(40),
+                                            color: kPrimaryColor),
+                                      ),
+                                    )
+                                  ],
                                 ),
-                              ),
-                              const Gap(2),
-                              Visibility(
-                                visible: index == selected,
-                                child: Container(
-                                  height: 3,
-                                  width: 40,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(40),
-                                      color: kPrimaryColor),
-                                ),
-                              )
-                            ],
-                          ),
-                        );
+                              );
 
-                      }
+                            }
+                        ),
+                      ),
+                    ],
                   ),
                 ),
+                Expanded(
+                    child:
+                    savingTap(
+                        selected: selected,
+                        callback: (int index) {
+                          setState(() {
+                            selected = index;
+                          });
+                        },
+                        pageController: pageController2)
+                )
               ],
             ),
           ),
-            Expanded(
-                child:
-                savingTap(
-                    selected: selected,
-                    callback: (int index) {
-                      setState(() {
-                        selected = index;
-                      });
-                    },
-                    pageController: pageController2)
-            )
-          ],
-        ),
-      ),
+        ),)
+
     );
   }
 }

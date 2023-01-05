@@ -9,8 +9,10 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../../utils/colors.dart';
 import '../../utils/styles.dart';
+import '../Buy/buyerListOfShowBottonSheet.dart';
 import 'Beneficiary List.dart';
 import 'BeneficiaryListClass.dart';
+import 'bottomSheetForSend/showCoinForSend.dart';
 
 class sendCrypto extends StatefulWidget {
   const sendCrypto({Key? key}) : super(key: key);
@@ -53,12 +55,54 @@ class _sendCryptoState extends State<sendCrypto> {
           },
               icon: const Icon(Icons.arrow_back_ios_new_sharp, color: Colors.black,)),
         ),
-        body: screenResponisive(scaffold: Center(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15),
-          child: Container(
-            child: BeneficiaryList(),
-          ),
+        body: screenResponisive(scaffold: SingleChildScrollView(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 15.0, right: 15),
+            child: Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                const Text("Ethereum Wallet", style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14,),),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text("7.34 ETH", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 24,),),
+                    Image.asset("assets/png/img_15.png", scale: 2,),
+
+                  ],
+                ),
+                  const Text("Recipient Wallet Address", style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14,),),
+                  const Gap(7),
+                  const Gap(7),
+                  EditTextMyOwn(Boardcolor: Color(0xFF7F23A8), obscureText: false, hintText: "0xF2AA65753e97464380CE9578C2559b4dEb630df9",),
+                  const Gap(15),
+                  const Text("Amount", style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14,),),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Flexible(
+                        child: SendCryptdrop1(radius: 10, Textdata: 'ETH', width: 99, Boxcolor: Color(0xFF7F23A8), color: Colors.white, icon: Icons.keyboard_arrow_down_rounded, Iconcolor: Colors.white,onTap: () {
+                          showModalBottomSheet(
+                              backgroundColor: Colors.transparent,
+                              context: context,
+                              builder: (context) => ShowBottonSheet());
+                        },),
+                      ),
+                      Flexible(
+                          flex: 2,
+                          child: EditTextMyOwn(Boardcolor: Color(0xFF7F23A8), obscureText: false, hintText: "0.23",keyboardType: TextInputType.number)),
+
+                    ],
+                  ),
+                  const Gap(250),
+                  ContainerBtn(radius: 10, Textdata: "Proceed", Boxcolor:  Color(0xFF7F23A8), color: Colors.white,)
+
+
+                ],
+              ),
+            ),
+            ),
           ),
         ),)
 

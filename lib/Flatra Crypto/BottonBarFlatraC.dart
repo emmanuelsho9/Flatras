@@ -20,8 +20,8 @@ class FlatraCryptoBottomBar extends StatefulWidget {
 class _FlatraCryptoBottomBarState extends State<FlatraCryptoBottomBar> {
   int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
-    //HomeFlatra(),
-    Text("home"),
+    HomeFlatra(),
+    //Text("home"),
     FlatraCrypto(),
 
   ];

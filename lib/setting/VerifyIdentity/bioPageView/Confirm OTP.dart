@@ -1,6 +1,8 @@
 import 'package:flatra/common_widgets/myCommentWidgets/Responive/screenResponsive/screenRes.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../../../common_widgets/myCommentWidgets/ContainerBtnContainer.dart';
 import '../../../common_widgets/myCommentWidgets/EditTextMyOwn.dart';
@@ -55,7 +57,7 @@ class Confirmotp extends StatelessWidget {
                       .copyWith(color: Colors.black, fontSize: 12, fontWeight: FontWeight.w400),
                   textAlign: TextAlign.start,
                 ),
-                Gap(32),
+                const Gap(32),
                 Text(
                   "OTP",
                   style: Styles.headLineStyle2
@@ -67,7 +69,6 @@ class Confirmotp extends StatelessWidget {
                   obscureText: false,
                   keyboardType: TextInputType.number,
                   Boardcolor: Color(0xFF7F23A8),
-                  width: double.infinity,
                   height: 50,
                   Boxcolor: Colors.white,
                   Hintcolor: Color(0xFF9B9B9B),
@@ -84,7 +85,7 @@ class Confirmotp extends StatelessWidget {
                 Gap(30),
                 ContainerBtn(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => MeansofIdentificaation (),));
+                    Get.to(MeansofIdentificaation());
                   },
                   radius: 10,
                   Textdata: "Proceed",
