@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import '../Savings Screen/Active/Fixed Deposit.dart';
+import '../common_widgets/bottomSheetToSelect.dart';
 import '../common_widgets/myCommentWidgets/ContainerBtnContainer.dart';
 import '../common_widgets/myCommentWidgets/EditTextMyOwn.dart';
 import '../setting/Appearance/Appearance.dart';
@@ -18,6 +19,28 @@ class TermsofTrade extends StatefulWidget {
 
 class _TermsofTradeState extends State<TermsofTrade> {
   DateTime _selectedDate = DateTime.now();
+
+  var stringFromActivity;
+  var Isimg;
+
+  Future _startActivity() async {
+
+    var results = await showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (context) => RetuernContentbuyerListOfShowBottonSheet());
+
+    if (results != null) {
+      setState(() {
+        stringFromActivity = results[0];
+        Isimg = results[1];
+        print(stringFromActivity);
+      }
+      );
+    }else if(stringFromActivity == null&&Isimg==null){
+      return Text("data");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +92,7 @@ class _TermsofTradeState extends State<TermsofTrade> {
                         child: EditTextMyOwn(
                           obscureText: false,
                           Boardcolor: Color(0xFFF5F5F5),
+                          keyboardType: TextInputType.phone,
                           height: 50,
                           hintText: "0.00",
                           IcononPressed: () {
@@ -81,25 +105,37 @@ class _TermsofTradeState extends State<TermsofTrade> {
                       ),
 
                       Flexible(
-                        child: Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color:  Color(0xFF7F23A8),
-                            borderRadius: BorderRadius.circular(10),
+                        child: InkWell(
+                          onTap: () async {
+                            _startActivity();
+
+                          },
+                          child: FittedBox(
+                            fit: BoxFit.fitWidth,
+                            child: Container(
+                              height: 50,
+                              padding: EdgeInsets.only(right: 7, left: 7),
+                              decoration: BoxDecoration(
+                                color: const  Color(0xFF7F23A8),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Center(child: Row(
+                                children:  [
+                                  const Icon(Icons.keyboard_arrow_down, color: Colors.white,),
+                                  const  Gap(3),
+                                  FittedBox(
+                                    child: Text(stringFromActivity==null?"Select":stringFromActivity.toString(), style: const TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        color: Colors.white,
+                                        fontSize: 14
+                                    ),),
+                                  ),
+                                  const  Gap(5),
+                                  Isimg==null?Image.asset("assets/images/img_20.png",width: 28, height: 28):Image.network(Isimg, width: 28, height: 28,),
+                                ],
+                              )),
+                            ),
                           ),
-                          child: Center(child: Row(
-                            children:  [
-                              const Icon(Icons.keyboard_arrow_down, color: Colors.white,),
-                              const  Gap(3),
-                              const Text("USD", style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.white,
-                                  fontSize: 14
-                              ),),
-                              const  Gap(5),
-                              Image.asset("assets/png/img_1.png", width: 14, height: 14,),
-                            ],
-                          )),
                         ),
                       ),
                     ],
@@ -124,6 +160,32 @@ class _TermsofTradeState extends State<TermsofTrade> {
                     ],
                   ),
                   const   Gap(13),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                   AppearanceSelector(
                     gapDown: 10,
                     Bordercolor: Color(0xFF7F23A8),

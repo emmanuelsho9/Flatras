@@ -41,7 +41,7 @@ class FixedDeposit extends StatelessWidget {
                 "Fixed Deposit automatically withdraws\n"
                     "money from your assigned wallet",
                 style: Styles.headLineStyle2
-                    .copyWith(color: Colors.black,fontSize: 12, fontWeight: FontWeight.w400),
+                    .copyWith(color: Colors.black,fontSize: 16, fontWeight: FontWeight.w400),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 34,),
@@ -88,7 +88,7 @@ class FixedDeposit extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Amount",
+                    "Source",
                     style: Styles.headLineStyle2
                         .copyWith(color: Colors.black,fontSize: 14, fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center,
@@ -96,7 +96,7 @@ class FixedDeposit extends StatelessWidget {
                   const SizedBox(height: 8,),
                   ContainerDrop(
                     onTap: () {
-                      Get.to(const InformationRequired());
+                      //Get.to(const InformationRequired());
                     },
                     radius: 10,
                     Textdata: "Flatra Wallet",

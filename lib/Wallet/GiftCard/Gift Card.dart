@@ -10,30 +10,25 @@ import 'package:get/get_core/src/get_main.dart';
 import '../../utils/colors.dart';
 import '../../utils/styles.dart';
 import '../Send/Send Crypto.dart';
+import 'PurchaseGiftCard.dart';
 import 'Redeem Gift Card.dart';
 
-class GiftCard extends StatefulWidget {
+class GiftCard extends StatelessWidget {
   const GiftCard({Key? key}) : super(key: key);
 
-  @override
-  State<GiftCard> createState() => _GiftCardState();
-}
-
-class _GiftCardState extends State<GiftCard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
+          centerTitle: true,
           backgroundColor: Colors.white,
-          title: const Center(
-            child: Text("Gift Card", style: TextStyle(
-                fontWeight:FontWeight.w600,
-                fontSize: 16,
-                color: Colors.black
-            ),),
-          ),
+          title: const Text("Gift Card", style: TextStyle(
+              fontWeight:FontWeight.w600,
+              fontSize: 16,
+              color: Colors.black
+          ),),
           leading: IconButton(onPressed: (){
             Navigator.pop(context);
           },
@@ -49,7 +44,11 @@ class _GiftCardState extends State<GiftCard> {
                 const Text("Gift Crypto to anyone you wish",
                   style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),),
                 const Gap(33),
-                ContainerBtn2(radius: 10, Textdata: "Purchase Gift Card", Boxcolor: Colors.white,color: Colors.black,),
+                ContainerBtn2(radius: 10, Textdata: "Purchase Gift Card",
+                  Boxcolor: Colors.white,color: Colors.black,onTap: () {
+                    Get.to(purchaseGiftCard());
+
+                  },),
                 const Gap(10),
                 ContainerBtn2(onTap: () {
                   Get.to(RedeemGiftCard());
@@ -64,11 +63,6 @@ class _GiftCardState extends State<GiftCard> {
     );
   }
 }
-
-
-
-
-
 
 class ContainerBtn2 extends StatelessWidget {
   ContainerBtn2({

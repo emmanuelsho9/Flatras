@@ -16,7 +16,11 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../../../Savings Screen/Active/WithdrawActiviteandComplete/WithdrawActiviteandComplete.dart';
+import '../../../Wallet/Receive/Receive.dart';
+import '../../../Wallet/Send/Send Crypto.dart';
+import '../../../Wallet/Swap/SwapHome.dart';
 import '../../../common_widgets/testing/Trade.dart';
+import '../../../common_widgets/testing/anotherTrade.dart';
 import '../../buy_crypto/screens/buy_screen.dart';
 
 class ViewCoin extends StatefulWidget {
@@ -210,41 +214,56 @@ class _ViewCoinState extends State<ViewCoin> {
                   ],
                 ),
               ),
-              Row(
-                children: [
-                  Transform.rotate(
-                    angle: 90 * pi / 180,
-                    child: const Icon(
-                      Icons.sell,
-                      size: 25,
-                      color: kSecondaryColor,
+              InkWell(
+                onTap: () {
+                  Get.to(anoterTrade());
+
+
+                },
+                child: Row(
+                  children: [
+                    Transform.rotate(
+                      angle: 90 * pi / 180,
+                      child: const Icon(
+                        Icons.sell,
+                        size: 25,
+                        color: kSecondaryColor,
+                      ),
                     ),
-                  ),
-                  const Gap(15),
-                  Text(
-                    "Sell",
-                    style: Styles.textStyle.copyWith(
-                        color: Colors.white, fontWeight: FontWeight.w400),
-                  )
-                ],
-              ),
-              Row(
-                children: [
-                  const Icon(
-                    Icons.arrow_upward,
-                    size: 25,
-                    color: kSecondaryColor,
-                  ),
-                  const Gap(15),
-                  Text(
-                    "Receive",
-                    style: Styles.textStyle.copyWith(
-                        color: Colors.white, fontWeight: FontWeight.w400),
-                  )
-                ],
+                    const Gap(15),
+                    Text(
+                      "Sell",
+                      style: Styles.textStyle.copyWith(
+                          color: Colors.white, fontWeight: FontWeight.w400),
+                    )
+                  ],
+                ),
               ),
               InkWell(
                 onTap: () {
+                  Get.to(Recieve());
+
+                },
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.arrow_upward,
+                      size: 25,
+                      color: kSecondaryColor,
+                    ),
+                    const Gap(15),
+                    Text(
+                      "Receive",
+                      style: Styles.textStyle.copyWith(
+                          color: Colors.white, fontWeight: FontWeight.w400),
+                    )
+                  ],
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  Get.to(sendCrypto());
+
                 },
                 child: Row(
                   children: [
@@ -262,20 +281,26 @@ class _ViewCoinState extends State<ViewCoin> {
                   ],
                 ),
               ),
-              Row(
-                children: [
-                  const Icon(
-                    Icons.swap_horizontal_circle,
-                    size: 25,
-                    color: kSecondaryColor,
-                  ),
-                  const Gap(15),
-                  Text(
-                    "Swap",
-                    style: Styles.textStyle.copyWith(
-                        color: Colors.white, fontWeight: FontWeight.w400),
-                  )
-                ],
+              InkWell(
+                onTap: () {
+                  Get.to(SwapHome());
+
+                },
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.swap_horizontal_circle,
+                      size: 25,
+                      color: kSecondaryColor,
+                    ),
+                    const Gap(15),
+                    Text(
+                      "Swap",
+                      style: Styles.textStyle.copyWith(
+                          color: Colors.white, fontWeight: FontWeight.w400),
+                    )
+                  ],
+                ),
               ),
               InkWell(
                 onTap: () {

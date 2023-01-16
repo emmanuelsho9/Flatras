@@ -87,10 +87,26 @@ class SectionList extends StatelessWidget {
                 ),
               ),
       ),
-      Container(
-        color: Colors.red[400],
-        child: Text("info 3"),
+      Obx(
+        () => coinDataController.checkLoading().isTrue
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : RefreshIndicator(
+                onRefresh: () async {
+                  await _refreshData();
+                },
+                child: ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  itemCount: coinDataController.coinDataList.length,
+                  itemBuilder: (context, index) {
+                    return CoinCard(
+                        coin: coinDataController.coinDataList[index]);
+                  },
+                ),
+              ),
       ),
+
     ];
     return PageView.builder(
       physics: const NeverScrollableScrollPhysics(),

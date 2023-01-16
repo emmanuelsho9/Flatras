@@ -23,6 +23,7 @@ import 'Buy/buyerListOfShowBottonSheet.dart';
 import 'GiftCard/Gift Card.dart';
 import 'Receive/Receive.dart';
 import 'Send/Send Crypto.dart';
+import 'Swap/SwapHome.dart';
 import 'Walletsection_lists.dart';
 import '../common_widgets/myCommentWidgets/walletCategories.dart';
 
@@ -147,7 +148,6 @@ class _walletState extends State<wallet> {
                       backgroundColor: Colors.transparent,
                       context: context,
                       builder: (context) => buyerListOfShowBottonSheet());
-                print("object");
                 },child: WalletIconForBuy(img: "assets/images/img_14.png", title: "Buy")),
                 const  Gap(11),
                 InkWell(
@@ -157,14 +157,18 @@ class _walletState extends State<wallet> {
                 WalletIconForBuy(img: "assets/images/img_15.png", title: "Send")),
                 const  Gap(11),
                 InkWell(onTap: () {
-                  Get.to(Recieve());
+                 Get.to(Recieve());
                 },child:
                 WalletIconForBuy(img: "assets/images/img_16.png", title: "Receive")),
                 const  Gap(11),
-                WalletIconForBuy(img: "assets/images/img_17.png", title: "Swap"),
+                InkWell(
+                    onTap: () {
+                      Get.to(SwapHome());
+                    },
+                    child: WalletIconForBuy(img: "assets/images/img_17.png", title: "Swap")),
                 const  Gap(11),
                 InkWell(onTap: () {
-                  Get.to(GiftCard());
+                 Get.to(GiftCard());
                 },child: WalletIconForBuy(img: "assets/images/img_18.png", title: "Gift Card")),
 
               ],

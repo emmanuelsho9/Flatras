@@ -13,6 +13,9 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get/utils.dart';
 
+import 'GiftCard/GiftCardHome.dart';
+
+
 class WSectionList extends StatelessWidget {
   WSectionList(
       {super.key,
@@ -51,14 +54,34 @@ class WSectionList extends StatelessWidget {
           ),
         ),
       ),
-      Container(
-        color: Colors.red[400],
-        child: Text("info 2"),
+      Obx(
+            () => coinDataController.checkLoading().isTrue
+            ? const Center(
+          child: CircularProgressIndicator(),
+        )
+            : RefreshIndicator(
+          onRefresh: () async {
+            await _refreshData();
+          },
+          child: ListView.builder(
+            scrollDirection: Axis.vertical,
+            itemCount: coinDataController.coinDataList.length,
+            itemBuilder: (context, index) {
+              return CoinCard(
+                  coin: coinDataController.coinDataList[index]);
+            },
+          ),
+        ),
       ),
+
+      // Container(
+      //   color: Colors.red[400],
+      //   child: Text("info 2"),
+      // ),
 
       Container(
         color: Colors.red[400],
-        child: Text("info 3"),
+        child: GiftCardHome(),
       ),
     ];
     return PageView.builder(

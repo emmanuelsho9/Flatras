@@ -15,18 +15,17 @@ import '../../features/home/models/coin_data.dart';
 import '../../setting/Appearance/Appearance.dart';
 import '../../utils/colors.dart';
 import '../../utils/styles.dart';
-import '../Escrow Details.dart';
-import 'EscrowDetailsSeller.dart';
+import '../Escrow/seller/EscrowDetailsSeller.dart';
 
 
-class SellerTermsofTrade extends StatefulWidget {
-   SellerTermsofTrade({Key? key}) : super(key: key);
+class bottomShtToSelect extends StatefulWidget {
+  bottomShtToSelect({Key? key}) : super(key: key);
 
   @override
-  State<SellerTermsofTrade> createState() => _SellerTermsofTradeState();
+  State<bottomShtToSelect> createState() => _bottomShtToSelectState();
 }
 
-class _SellerTermsofTradeState extends State<SellerTermsofTrade> {
+class _bottomShtToSelectState extends State<bottomShtToSelect> {
 
   final CoinDataController LcoinDataController = Get.put(CoinDataController());
 
@@ -40,15 +39,15 @@ class _SellerTermsofTradeState extends State<SellerTermsofTrade> {
 
   Future _startActivity() async {
 
-     var results = await showModalBottomSheet(
+    var results = await showModalBottomSheet(
         backgroundColor: Colors.transparent,
         context: context,
         builder: (context) => RetuernContentbuyerListOfShowBottonSheet());
 
     if (results != null) {
       setState(() {
-         stringFromActivity = results[0];
-         Isimg = results[1];
+        stringFromActivity = results[0];
+        Isimg = results[1];
         print(stringFromActivity);
       }
       );
@@ -126,7 +125,7 @@ class _SellerTermsofTradeState extends State<SellerTermsofTrade> {
                           onTap: () async {
                             _startActivity();
 
-                           },
+                          },
                           child: FittedBox(
                             fit: BoxFit.fitWidth,
                             child: Container(
@@ -140,13 +139,13 @@ class _SellerTermsofTradeState extends State<SellerTermsofTrade> {
                                 children:  [
                                   const Icon(Icons.keyboard_arrow_down, color: Colors.white,),
                                   const  Gap(3),
-                                   FittedBox(
-                                     child: Text(stringFromActivity==null?"Select":stringFromActivity.toString(), style: const TextStyle(
+                                  FittedBox(
+                                    child: Text(stringFromActivity==null?"Select":stringFromActivity.toString(), style: const TextStyle(
                                         fontWeight: FontWeight.w700,
                                         color: Colors.white,
                                         fontSize: 14
-                                  ),),
-                                   ),
+                                    ),),
+                                  ),
                                   const  Gap(5),
                                   Isimg==null?Image.asset("assets/images/img_20.png",width: 28, height: 28):Image.network(Isimg, width: 28, height: 28,),
                                 ],
@@ -192,153 +191,153 @@ class _SellerTermsofTradeState extends State<SellerTermsofTrade> {
 
 
 
-                //TODO:down
-                Column(
-                  children: [
-                    const   Gap(13),
-                    AppearanceSelector(
-                      gapDown: 10,
-                      Bordercolor: Color(0xFF7F23A8),
-                      heading: "By Milestones",
-                      subHeading: "Divide the project into smaller segments and pay\n"
-                          "upon completion of milestone.",
-                      elevation: 0,
-                    ),
-                    const    Gap(10),
-                    AppearanceSelector(
-                      gapDown: 10,
-                      Bordercolor: Color(0xFFEDEDED),
-                      heading: "One time Payement",
-                      subHeading: "Make a one-time payment into Flatra, \n "
-                          "funds will be dibursed upon completion. ",
-                      elevation: 0,
-                    ),
-                    Gap(51),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: const [
-                        Text("Milestone 1", style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14,
-                            color: Color(0xFF7F23A8)
-                        ),),
+                  //TODO:down
+                  Column(
+                    children: [
+                      const   Gap(13),
+                      AppearanceSelector(
+                        gapDown: 10,
+                        Bordercolor: Color(0xFF7F23A8),
+                        heading: "By Milestones",
+                        subHeading: "Divide the project into smaller segments and pay\n"
+                            "upon completion of milestone.",
+                        elevation: 0,
+                      ),
+                      const    Gap(10),
+                      AppearanceSelector(
+                        gapDown: 10,
+                        Bordercolor: Color(0xFFEDEDED),
+                        heading: "One time Payement",
+                        subHeading: "Make a one-time payment into Flatra, \n "
+                            "funds will be dibursed upon completion. ",
+                        elevation: 0,
+                      ),
+                      Gap(51),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: const [
+                          Text("Milestone 1", style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              color: Color(0xFF7F23A8)
+                          ),),
 
-                      ],
-                    ),
+                        ],
+                      ),
 
-                    const   Gap(10),
-                    Row(
-                      children:  const [
-                        Text("Description", style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14
-                        ),),
-                      ],
-                    ),
-                    const Gap(6),
-                    EditTextMyOwn(
-                      obscureText: false,
-                      Boardcolor: Color(0xFFF5F5F5),
-                      height: 50,
-                      hintText: "eg. abc@gmail.com",
-                      Boxcolor: Color(0xFFF5F5F5),
-                      Hintcolor: Color(0xFF9B9B9B),
+                      const   Gap(10),
+                      Row(
+                        children:  const [
+                          Text("Description", style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14
+                          ),),
+                        ],
+                      ),
+                      const Gap(6),
+                      EditTextMyOwn(
+                        obscureText: false,
+                        Boardcolor: Color(0xFFF5F5F5),
+                        height: 50,
+                        hintText: "eg. abc@gmail.com",
+                        Boxcolor: Color(0xFFF5F5F5),
+                        Hintcolor: Color(0xFF9B9B9B),
 
-                    ),
-                    Gap(9),
-                    Row(
-                      children: const [
-                        Text("Amount", style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14
-                        ),),
-                      ],
-                    ),
-                    const Gap(22),
-                    EditTextMyOwn(
-                      obscureText: false,
-                      Boardcolor: Color(0xFFF5F5F5),
-                      height: 50,
-                      hintText: "eg. 5000",
-                      Boxcolor: Color(0xFFF5F5F5),
-                      Hintcolor: Color(0xFF9B9B9B),
+                      ),
+                      Gap(9),
+                      Row(
+                        children: const [
+                          Text("Amount", style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14
+                          ),),
+                        ],
+                      ),
+                      const Gap(22),
+                      EditTextMyOwn(
+                        obscureText: false,
+                        Boardcolor: Color(0xFFF5F5F5),
+                        height: 50,
+                        hintText: "eg. 5000",
+                        Boxcolor: Color(0xFFF5F5F5),
+                        Hintcolor: Color(0xFF9B9B9B),
 
-                    ),
-                    const Gap(9),
-                    Row(
-                      children: const [
-                        Text("Due Date (optional)", style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14
-                        ),),
-                      ],
-                    ),
-                    const Gap(22),
-                    ContainerDrop(
-                      onTap: () {
-                      },
-                      radius: 10,
-                      IcononPressed: () async {
-                        DateTime? dateTime = await showDatePicker(context: context,
-                            initialDate: _selectedDate,
-                            firstDate: DateTime(1900),
-                            builder: (context, child) {
-                              return Theme(
-                                data: Theme.of(context).copyWith(
-                                  colorScheme: const ColorScheme.light(
-                                    primary: Color(0xFF7F23A8), // <-- SEE HERE
-                                    onPrimary: Colors.white, // <-- SEE HERE
-                                    onSurface: Color.fromARGB(255, 66, 125, 145), // <-- SEE HERE
-                                  ),
-                                  textButtonTheme: TextButtonThemeData(
-                                    style: TextButton.styleFrom(
-                                      primary: Color(0xFF7F23A8), // button text color
+                      ),
+                      const Gap(9),
+                      Row(
+                        children: const [
+                          Text("Due Date (optional)", style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14
+                          ),),
+                        ],
+                      ),
+                      const Gap(22),
+                      ContainerDrop(
+                        onTap: () {
+                        },
+                        radius: 10,
+                        IcononPressed: () async {
+                          DateTime? dateTime = await showDatePicker(context: context,
+                              initialDate: _selectedDate,
+                              firstDate: DateTime(1900),
+                              builder: (context, child) {
+                                return Theme(
+                                  data: Theme.of(context).copyWith(
+                                    colorScheme: const ColorScheme.light(
+                                      primary: Color(0xFF7F23A8), // <-- SEE HERE
+                                      onPrimary: Colors.white, // <-- SEE HERE
+                                      onSurface: Color.fromARGB(255, 66, 125, 145), // <-- SEE HERE
+                                    ),
+                                    textButtonTheme: TextButtonThemeData(
+                                      style: TextButton.styleFrom(
+                                        primary: Color(0xFF7F23A8), // button text color
+                                      ),
                                     ),
                                   ),
-                                ),
-                                child: child!,
-                              );;
-                            },
-                            lastDate: DateTime(3000));
-                        if(dateTime!=null){
-                          setState(() {
-                            _selectedDate=dateTime;
-                          });
-                        }
+                                  child: child!,
+                                );;
+                              },
+                              lastDate: DateTime(3000));
+                          if(dateTime!=null){
+                            setState(() {
+                              _selectedDate=dateTime;
+                            });
+                          }
 
 
 
-                      },
-                      icon: Icons.calendar_month,
-                      Textdata: "${_selectedDate.day}/${_selectedDate.month}/${_selectedDate.year}",
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      Boxcolor: Colors.white,
-                      fontSize: 16,
-                    ),
-                    Gap(23),
-                    Row(
-                      children: [
-                        IconButton(onPressed: () => null,
-                            icon: const Icon(Icons.add_circle_rounded, size: 30,
-                              color: Color(0xFF7F23A8),)),
+                        },
+                        icon: Icons.calendar_month,
+                        Textdata: "${_selectedDate.day}/${_selectedDate.month}/${_selectedDate.year}",
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                        Boxcolor: Colors.white,
+                        fontSize: 16,
+                      ),
+                      Gap(23),
+                      Row(
+                        children: [
+                          IconButton(onPressed: () => null,
+                              icon: const Icon(Icons.add_circle_rounded, size: 30,
+                                color: Color(0xFF7F23A8),)),
 
 
-                        const Text("Add Milestone"),
-                      ],
-                    ),
+                          const Text("Add Milestone"),
+                        ],
+                      ),
 
-                    const Gap(40),
-                    ContainerBtn(radius: 10, Textdata: "Proceed",
-                      color: Color(0xFFFFFFff),
-                      Boxcolor: Color(0xFF7F23A8),
-                      onTap: () {
-                        Get.to(EscrowDetailsSeller());
-                      },
-                    ),
-                    const Gap(78),
-                  ],
-                ),
+                      const Gap(40),
+                      ContainerBtn(radius: 10, Textdata: "Proceed",
+                        color: Color(0xFFFFFFff),
+                        Boxcolor: Color(0xFF7F23A8),
+                        onTap: () {
+                          Get.to(EscrowDetailsSeller());
+                        },
+                      ),
+                      const Gap(78),
+                    ],
+                  ),
 
                 ],
               ),

@@ -39,7 +39,8 @@ class settingActive extends StatelessWidget {
             children:  [
               const Gap(50),
               Text(
-                "Save your preferencs",
+                " Manually deposit money from your\n"
+                    "assigned wallet",
                 style: Styles.headLineStyle2
                     .copyWith(color: Colors.black,fontSize: 16, fontWeight: FontWeight.w400),
                 textAlign: TextAlign.center,
@@ -48,24 +49,24 @@ class settingActive extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Set the type of savings you would prefer",
-                    style: Styles.headLineStyle2
-                        .copyWith(color: Colors.black,fontSize: 12, fontWeight: FontWeight.w400),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 8,),
-                  ContainerDrop(
-                    onTap: () {
-                      // Get.to(const InformationRequired());
-                    },
-                    radius: 10,
-                    Textdata: "Period",
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400,
-                    Boxcolor: Colors.white,
-                    fontSize: 16,
-                  )
+                  // Text(
+                  //   "Set the type of savings you would prefer",
+                  //   style: Styles.headLineStyle2
+                  //       .copyWith(color: Colors.black,fontSize: 12, fontWeight: FontWeight.w400),
+                  //   textAlign: TextAlign.center,
+                  // ),
+                  // const SizedBox(height: 8,),
+                  // ContainerDrop(
+                  //   onTap: () {
+                  //     // Get.to(const InformationRequired());
+                  //   },
+                  //   radius: 10,
+                  //   Textdata: "Period",
+                  //   color: Colors.black,
+                  //   fontWeight: FontWeight.w400,
+                  //   Boxcolor: Colors.white,
+                  //   fontSize: 16,
+                  // )
                 ],
               ),
               const Gap(17),
@@ -88,7 +89,7 @@ class settingActive extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Amount",
+                    "Source",
                     style: Styles.headLineStyle2
                         .copyWith(color: Colors.black,fontSize: 14, fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center,

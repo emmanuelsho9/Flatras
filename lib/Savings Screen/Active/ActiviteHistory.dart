@@ -32,7 +32,9 @@ class HistoryActivit extends StatelessWidget {
             icon: const Icon(Icons.arrow_back_ios_new_rounded)),
         actions: [
           IconButton(onPressed: (){
-            Get.to(settingActive());
+         //   Get.to(settingActive());
+            Get.to(QuickDepositSetting());
+
           },
               icon: const Icon(Icons.settings)),        ],
       ),
@@ -147,7 +149,7 @@ class HistoryActivit extends StatelessWidget {
                                   const Gap(18),
                                   InkWell(
                                     onTap: () {
-                                      Get.to( QuickDeposit());
+                                       Get.to(settingActive());
                                     },
                                     child: Row(
                                       children: [

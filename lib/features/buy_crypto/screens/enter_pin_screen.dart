@@ -62,7 +62,8 @@ class EnterPinScreen extends StatelessWidget {
               EnterPinPad(onNumberSelected: (String j) {
 
               },),
-             const Gap(38),              ContainerBtn(radius: 10, color: Colors.white, Textdata: "Proceed", Boxcolor: const Color(0xFF7F23A8),)
+             const Gap(38),
+              ContainerBtn(radius: 10, color: Colors.white, Textdata: "Proceed", Boxcolor: const Color(0xFF7F23A8),)
 
             ],
           ),

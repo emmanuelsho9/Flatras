@@ -11,28 +11,22 @@ import '../../utils/colors.dart';
 import '../../utils/styles.dart';
 import '../Send/Send Crypto.dart';
 
-class RedeemGiftCard extends StatefulWidget {
+class RedeemGiftCard extends StatelessWidget {
   const RedeemGiftCard({Key? key}) : super(key: key);
 
-  @override
-  State<RedeemGiftCard> createState() => _RedeemGiftCardState();
-}
-
-class _RedeemGiftCardState extends State<RedeemGiftCard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
+          centerTitle: true,
           backgroundColor: Colors.white,
-          title: const Center(
-            child: Text("Redeem Gift Card", style: TextStyle(
-                fontWeight:FontWeight.w600,
-                fontSize: 16,
-                color: Colors.black
-            ),),
-          ),
+          title: const Text("Redeem Gift Card", style: TextStyle(
+              fontWeight:FontWeight.w600,
+              fontSize: 16,
+              color: Colors.black
+          ),),
           leading: IconButton(onPressed: (){
             Navigator.pop(context);
           },
@@ -56,10 +50,10 @@ class _RedeemGiftCardState extends State<RedeemGiftCard> {
                    ],
                  ),
                 const Gap(7),
-                EditTextMyOwn(Boardcolor: Color(0xFF7F23A8), obscureText: false,
+                EditTextMyOwn(Boardcolor: const Color(0xFF7F23A8), obscureText: false,
                   height: 50,hintText: "input 16 digit character",),
                 const Gap(40),
-                ContainerBtn(radius: 10, Textdata: "Redeem", Boxcolor: Color(0xFF7F23A8),color: Colors.white,),
+                ContainerBtn(radius: 10, Textdata: "Redeem", Boxcolor: const Color(0xFF7F23A8),color: Colors.white,),
 
 
               ],
