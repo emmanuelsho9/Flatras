@@ -140,7 +140,7 @@ class _bioPageViewOneState extends State<bioPageViewOne> {
                                   ),
                                 ),
                                 child: child!,
-                              );;
+                              );
                             },
                             lastDate: DateTime(3000));
 
