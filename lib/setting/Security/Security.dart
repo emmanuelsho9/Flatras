@@ -54,14 +54,14 @@ class Security extends StatelessWidget {
 
               },
               subHeading: "Reset your password",),
-            EscrowSecurePayment(headiing: "Seed phrase",
-              IcononPressed: () {
-                //TODO:Seed phrase
-                //   Navigator.push(context, MaterialPageRoute(builder: (context) => SeedPhraseNew()));
-
-
-              },
-              subHeading: "View your security phrase here",),
+            // EscrowSecurePayment(headiing: "Seed phrase",
+            //   IcononPressed: () {
+            //     //TODO:Seed phrase
+            //     //   Navigator.push(context, MaterialPageRoute(builder: (context) => SeedPhraseNew()));
+            //
+            //
+            //   },
+            //   subHeading: "View your security phrase here",),
             AppearanceSelector(
               GapIcon: 128,
               Bordercolor: Colors.white,

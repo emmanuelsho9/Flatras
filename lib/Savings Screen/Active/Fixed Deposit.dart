@@ -57,7 +57,7 @@ class FixedDeposit extends StatelessWidget {
                   const SizedBox(height: 8,),
                   ContainerDrop(
                     onTap: () {
-                      Get.to(const InformationRequired());
+                      //Get.to(const InformationRequired());
                     },
                     radius: 10,
                     Textdata: "Period",

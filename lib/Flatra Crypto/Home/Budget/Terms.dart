@@ -24,7 +24,7 @@ class Terms extends StatelessWidget {
       floatingActionButton: FloatingActionButton(onPressed: (){
         Get.to(Messages());
 
-      },backgroundColor: Color(0xFF7F23A8), child: Image.asset("assets/png/img_6.png", scale: 1.5,)),
+      },backgroundColor: Color(0xFF7F23A8), child: const Icon(Icons.message)),
       backgroundColor: Color(0xFFF5ECFF),
       body: ListView.builder(itemCount: l.length, itemBuilder: (context, index) {
         return Container(

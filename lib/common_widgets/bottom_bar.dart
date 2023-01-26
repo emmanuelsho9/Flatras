@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
+import '../Explore/ExploreHome.dart';
 import '../Savings Screen/Savings Screen.dart';
 import '../Wallet/wallet.dart';
 import '../setting/User.dart';
@@ -20,9 +21,8 @@ class _BottomBarState extends State<BottomBar> {
   int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    Text("Market"),
-    //Text("wallet"),
-     wallet(),
+    ExploreHome(),
+    wallet(),
      SavingsScreenHome(),
     SettingUser(),
 

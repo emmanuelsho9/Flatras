@@ -43,11 +43,13 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Add your onPressed code here!
-        },
+        onPressed: () =>
+            showModalBottomSheet(
+                backgroundColor: Colors.transparent,
+                context: context,
+                builder: (context) => AddTokenBottomSheet()),
         backgroundColor: kPrimaryColor,
-        child: const Icon(Icons.message),
+        child: const Icon(Icons.add),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 27),
@@ -82,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         Container(
                           alignment: Alignment.center,
-                          padding: const EdgeInsets.only(right: 10),
+                          padding: const EdgeInsets.only(left: 10, right: 10),
                           child: Text(
                             categories[index],
                             style: Styles.textStyle.copyWith(
@@ -111,14 +113,19 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Expanded(
-                child: SectionList(
-                    selected: selected,
-                    callback: (int index) {
-                      setState(() {
-                        selected = index;
-                      });
-                    },
-                    pageController: pageController2))
+                child: RefreshIndicator(
+                  onRefresh: () {
+                    return Future.value();
+                  },
+                  child: SectionList(
+                      selected: selected,
+                      callback: (int index) {
+                        setState(() {
+                          selected = index;
+                        });
+                      },
+                      pageController: pageController2),
+                ))
           ],
         ),
       ),

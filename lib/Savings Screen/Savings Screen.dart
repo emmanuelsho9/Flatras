@@ -94,7 +94,7 @@ class _SavingsScreenHomeState extends State<SavingsScreenHome> {
                                   children: [
                                     Container(
                                       alignment: Alignment.center,
-                                      padding: const EdgeInsets.only(right: 10),
+                                      padding: const EdgeInsets.only(right: 10, left: 10),
                                       child: Text(
                                         SavingScreen[index],
                                         style: Styles.textStyle.copyWith(color: index == selected ? kPrimaryColor : Colors.black, fontWeight: FontWeight.bold),

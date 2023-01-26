@@ -43,23 +43,28 @@ class All extends StatelessWidget {
           // width: double.infinity,
           child: ListView.builder(itemCount: _listHistory.length,itemBuilder: (context, index) {
             return Card(
-              child: Column(
-                children: [
-                  const SizedBox(height: 21,),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 15.0, right: 15),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 21,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(_listHistory[index].buy, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.black),),
-                        Text(_listHistory[index].date, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Color(0xFF7F23A8)),),
+                        Text(_listHistory[index].date, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.black),),
                       ],
                     ),
-                  ),
-                 Padding(
-                   padding: const EdgeInsets.only(left: 8.0, right: 80),
-                   child: Column(
+                    const SizedBox(height: 10,),
+
+                   Column(
                      children: [
+                       Row(
+                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                         children: [
+                           Text(_listHistory[index].buy, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.black),),
+                         ],
+                       ),
+                       const SizedBox(height: 10,),
                        Row(
                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                          children: [
@@ -102,9 +107,9 @@ class All extends StatelessWidget {
                        const SizedBox(height: 21,),
 
                      ],
-                   ),
-                 )
-                ],
+                   )
+                  ],
+                ),
               ),
             );
           },),

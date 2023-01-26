@@ -91,10 +91,10 @@ class _HistoryViewState extends State<HistoryView> {
                             children: [
                               Container(
                                 alignment: Alignment.center,
-                                padding: const EdgeInsets.only(right: 20),
+                                padding: const EdgeInsets.only(right: 10, left: 10),
                                 child: Text(
                                   SavingScreen[index],
-                                  style: Styles.textStyle.copyWith(color: index == selected ? kPrimaryColor : Colors.black, fontWeight: FontWeight.bold, fontSize: 14),
+                                  style: Styles.textStyle.copyWith(color: index == selected ? kPrimaryColor : Colors.black, fontWeight: FontWeight.bold, fontSize: 13),
                                 ),
                               ),
                               const Gap(2),
@@ -102,7 +102,7 @@ class _HistoryViewState extends State<HistoryView> {
                                 visible: index == selected,
                                 child: Container(
                                   height: 3,
-                                  width: 60,
+                                  width: 30,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(40),
                                       color: kPrimaryColor),
