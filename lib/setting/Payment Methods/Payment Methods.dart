@@ -1,8 +1,10 @@
+import 'package:flatra/setting/Pin/Pin.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../../common_widgets/enter pin keyboard.dart';
 import '../../common_widgets/myCommentWidgets/ContainerBtnContainer.dart';
 import '../../common_widgets/myCommentWidgets/Responive/screenResponsive/screenRes.dart';
 import '../../utils/styles.dart';
@@ -69,7 +71,25 @@ class PaymentMethods extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                     Boxcolor: Color(0xFF7F23A8),
                     fontSize: 16,
-                  )
+                  ),
+                  const Gap(10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Get.to(PinChange());
+                        },
+                        child: Text(
+                          "Set Pin",
+                          style: Styles.headLineStyle2
+                              .copyWith(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w400),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
+                  ),
+
                 ],
               ),
             ),

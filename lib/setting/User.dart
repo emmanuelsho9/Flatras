@@ -142,6 +142,7 @@ class FirstSectionWithCircleImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Column(
           children: [
@@ -169,7 +170,6 @@ class FirstSectionWithCircleImage extends StatelessWidget {
 
         ),
         const Gap(12),
-
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
@@ -186,6 +186,8 @@ class FirstSectionWithCircleImage extends StatelessWidget {
             ),),
           ],
         ),
+        const Gap(50),
+        Icon(Icons.headset_mic)
 
       ],
     );

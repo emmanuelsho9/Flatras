@@ -41,15 +41,18 @@ dependencies:
   flutter_native_splash: ^2.2.9
   flutter_otp_text_field: ^1.1.1
   flutter_screenutil: ^5.5.4
+  flutter_vector_icons: ^2.0.0
   gap: ^2.0.0
   get: ^4.6.5
   get_storage: ^2.0.3
   http: ^0.13.5
   intl: ^0.17.0
   ionicons: ^0.2.1
+  keyboard_actions: ^4.1.0
   lottie: ^1.4.2
   page_animation_transition: ^0.0.9
   page_transition: ^2.0.9
+  pin_code_fields: ^7.4.0
   pinput: ^2.2.12
   quiver: ^3.1.0
   sliding_clipped_nav_bar: ^3.1.0+4

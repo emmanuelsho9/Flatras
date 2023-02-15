@@ -9,6 +9,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../Flatra Crypto/Home/homeFlatra.dart';
 import '../features/home/screens/widgets.dart';
@@ -23,6 +24,8 @@ class EnterPinKeyboard extends StatelessWidget {
     final size = AppLayout.getSize(context);
     var amount = 0.obs;
     RxDouble convertedAmount = 0.0.obs;
+    final TextEditingController _pinController = TextEditingController();
+
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -53,6 +56,7 @@ class EnterPinKeyboard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.baseline,
                   textBaseline: TextBaseline.ideographic,
                   children: [
+
                     // Obx(
                     //       () => Text(
                     //       NumberFormat("#,##0.00", "en_US")
